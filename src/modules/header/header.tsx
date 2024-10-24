@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
-import { HeaderProps } from './header.types'
+import Navigation from './navigation'
 
-const Header: FC<HeaderProps> = () => {
+const Header: FC = () => {
   return (
     <Navigation />
   )

@@ -12,7 +12,7 @@ const Navigation: FC = () => (
 				<li>Pricing or Packages</li>
 				<li>Contact</li>
 			</ul>
-			<div className={styles.navBarPoint}>
+			<div className={styles.navbarpoint}>
 				<span className={styles.navpoint}></span>
 				<span className={styles.navpoint}></span>
 				<span className={styles.navpoint}></span>
