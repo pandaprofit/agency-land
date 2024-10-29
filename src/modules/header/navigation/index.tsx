@@ -6,11 +6,11 @@ import styles from './navigation.module.scss'
 const Navigation: FC = () => (
   <nav>
 			<ul className={styles.nav}>
-				<li>Service</li>
-				<li>Portfolio</li>
-				<li>About Us</li>
-				<li>Pricing or Packages</li>
-				<li>Contact</li>
+				<li>О Нас</li>
+				<li>Портфолио</li>
+				<li>Принципы работы</li>
+				<li>Услуги</li>
+				<li>Контакты</li>
 			</ul>
 			<div className={styles.navbarpoint}>
 				<span className={styles.navpoint}></span>

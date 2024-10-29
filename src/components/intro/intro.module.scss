@@ -9,12 +9,8 @@
 	padding: 250px 0 280px;
 
 
-	background:
-	radial-gradient(farthest-side,#3700FF99 10%, #3700FF99 0%,transparent) 60% 0% / 500px 500px,
-	radial-gradient(farthest-side,#00E5FF99 10%, #00E5FF99 0%,transparent) 80% 20% / 300px 300px,
-	radial-gradient(farthest-side,#C877B099 10%, #C877B099 0%,transparent) 73% 55% / 400px 400px,
-	radial-gradient(farthest-side,#829900 10%, #829900 0%,transparent) 80% 90% / 300px 300px;
-	background-repeat:no-repeat;
+	background: var(--gradient-blue), var(--gradient-azure), var(--gradient-pink), var(--gradient-yelow);
+	background-repeat: no-repeat;
 }
 
 
