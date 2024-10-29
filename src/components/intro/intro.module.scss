@@ -7,8 +7,6 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 250px 0 280px;
-
-
 	background: var(--gradient-blue), var(--gradient-azure), var(--gradient-pink), var(--gradient-yelow);
 	background-repeat: no-repeat;
 }
@@ -21,12 +19,13 @@
 	line-height: 60px;
 	color: white;
 	padding-left: 25px;
-}
+	font-family: var(--font-roboto);
 
-.highlighted{
-	font-weight: 600;
-}
+	.highlighted{
+		font-weight: 600;
+	}
 
-.it{
-	color: white;
+	.signs{
+		font-weight: 400;
+	}
 }

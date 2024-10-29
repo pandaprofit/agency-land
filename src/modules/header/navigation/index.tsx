@@ -13,11 +13,11 @@ const Navigation: FC = () => (
 				<li>Контакты</li>
 			</ul>
 			<div className={styles.navbarpoint}>
-				<span className={styles.navpoint}></span>
-				<span className={styles.navpoint}></span>
-				<span className={styles.navpoint}></span>
-				<span className={styles.navpoint}></span>
-				<span className={styles.navpoint}></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
 			</div>
 
 	</nav>

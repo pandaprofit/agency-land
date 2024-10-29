@@ -11,10 +11,10 @@ const Intro: FC<IntroProps> = ({className}) => {
     <div className={rootClassName}>
       <div>
 				<h1>
-					<span className={styles.it}>{`{IT `}</span>NAME<br/>{`AGENCY}`}
+					{`{IT NAME`}<br/>{`AGENCY}`}
 				</h1>
 				<p className={styles.description}>
-					<span className={styles.highlighted}>Your</span> Vision, <span className={styles.highlighted}>Our</span>  Code — Let&#39;s <br/> <span className={styles.highlighted}>Build</span>  the Web <span className={styles.highlighted}>Together</span>
+					<span className={styles.highlighted}>Your</span> Vision<span className={styles.signs}>,</span> <span className={styles.highlighted}>Our</span>  Code <span className={styles.signs}>—</span> <span className={styles.highlighted}>Let&#39;s <br/> Build</span>  the Web <span className={styles.highlighted}>Together</span>
 				</p>
 			</div>
     </div>

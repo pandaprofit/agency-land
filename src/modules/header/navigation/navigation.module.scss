@@ -12,21 +12,14 @@
 	font-size: 18px;
 	font-weight: 400;
 	line-height: 27px;
-	color: #fff;
+	color: var(--color-white-default);
 	font-family: var(--font-dm-sans);
 
   li:hover{
     color: transparent;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-color: var(--color-white-default);
   }
-}
-
-.navpoint{
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	border: 1px solid #fff;
 }
 
 .navbarpoint{
@@ -36,4 +29,11 @@
 	position: fixed;
 	right: 2%;
 	top: 40%;
+
+	span{
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		border: 1px solid var(--color-white-default);
+	}
 }
