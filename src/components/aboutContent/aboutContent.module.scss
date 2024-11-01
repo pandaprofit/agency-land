@@ -1,0 +1,35 @@
+@use "@styles/func";
+@use "@styles/mixins" as *;
+@use "@styles/variables";
+
+
+.root {
+	padding: 20px;
+	display: flex;
+	width: 500px;
+	height: 500px;
+	flex-direction: column;
+	color: var(--color-white-default);
+	border: solid 2px;
+	border-radius: 20px;
+
+	p {
+		padding: 15px 0;
+		font-family: var(--font-montserrat);
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 30px;
+	}
+}
+
+.title {
+	@include h2
+}
+
+.blue {
+	color: var(--color-blue);
+}
+
+.yelow {
+	color: var(--color-yelow);
+}

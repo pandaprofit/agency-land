@@ -62,9 +62,10 @@
 }
 
 @mixin h2 {
-  font-weight: 400;
-  font-size: rem(80);
-  line-height: 0.9;
+  font-family: var(--font-unbounded);
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 48px;
 
   @include tablet-small {
     font-size: rem(32);
