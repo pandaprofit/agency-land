@@ -51,8 +51,10 @@
 
 @mixin h1 {
   font-weight: 400;
-  font-size: rem(96);
-  line-height: 1.04;
+  font-size: 126px;
+  line-height: 150px;
+  font-family: var(--font-unbounded);
+  color: var(--color-white-default);
 
   @include tablet-small {
     font-size: rem(38);
