@@ -1,0 +1,31 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 250px 0 280px;
+	background: var(--gradient-blue), var(--gradient-azure), var(--gradient-pink), var(--gradient-yelow);
+	background-repeat: no-repeat;
+}
+
+
+.description{
+	margin: 0;
+	font-weight: 300;
+	font-size: 40px;
+	line-height: 60px;
+	color: white;
+	padding-left: 25px;
+	font-family: var(--font-roboto);
+
+	.highlighted{
+		font-weight: 600;
+	}
+
+	.signs{
+		font-weight: 400;
+	}
+}
