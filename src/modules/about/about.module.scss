@@ -18,6 +18,12 @@
 	color: var(--color-white-default);
 	font-size: 64px;
 	line-height: 96px;
+	gap: 16px;
+
+	span {
+		display: flex;
+		align-items: start;
+	}
 }
 
 .firstline {
@@ -31,6 +37,6 @@
 }
 
 .icon {
-	width: 50px;
-	height: 50px;
+	width: 48px;
+	height: 48px;
 }
