@@ -16,9 +16,9 @@
 	font-family: var(--font-unbounded);
 	font-weight: 700;
 	color: var(--color-white-default);
+	gap: 16px;
 	font-size: 64px;
 	line-height: 96px;
-	gap: 16px;
 
 	span {
 		display: flex;
@@ -39,4 +39,42 @@
 .icon {
 	width: 48px;
 	height: 48px;
+}
+
+.gradient1 {
+	background: var(--gradient-about-purple-white) -15% -15% / 150px 150px, var(--gradient-about-purple) -55% -55% / 300px 300px, var(--gradient-about-blue) 100% 140% / 230px 230px, var(--gradient-about-green) 50% 160% / 230px 230px;
+	background-repeat: no-repeat;
+}
+
+.gradient2 {
+	background: var(--gradient-about-blue) 100% -40% / 230px 230px, var(--gradient-about-green) 50% -60% / 230px 230px;
+	background-repeat: no-repeat;
+}
+
+.gradient3 {
+	position: relative;
+	overflow: hidden;
+}
+
+.gradient3::before {
+	content: "";
+	position: absolute;
+	top: -20%;
+	left: 50%;
+	width: 70%;
+	height: 70%;
+	background: radial-gradient(farthest-side, #ccb8e71c 60%, #ccb8e700 0%, transparent) 50% 50% / 5% 70%,
+							radial-gradient(farthest-side, #ccb8e71c 60%, #ccb8e700 0%, transparent) 50% 50% / 70% 5%,
+							radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 10% 60%,
+							radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 60% 10%,
+							radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 50% 25%,
+							radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 25% 50%;
+	background-repeat: no-repeat;
+	transform: rotate(60deg);
+}
+
+
+.gradient4 {
+	background: var(--gradient-about-purple-white) 120% 130% / 200px 200px, var(--gradient-about-purple) 250% 300% / 400px 400px;
+	background-repeat: no-repeat;
 }
