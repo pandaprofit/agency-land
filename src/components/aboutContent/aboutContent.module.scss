@@ -49,3 +49,67 @@
 .title {
 	@include h2
 }
+
+@include desktop {
+	.root {
+		width: 420px;
+		height: 420px;
+
+		.description {
+			font-size: 16px;
+			line-height: 25px;
+		}
+	}
+}
+
+@include tablet {
+	.root {
+		width: 320px;
+		height: 320px;
+		padding: 12px;
+
+		.description {
+			font-size: 13px;
+			line-height: 20px;
+			padding: 5px 0
+		}
+	}
+}
+
+@include tablet-small {
+	.root {
+		width: 420px;
+		height: 420px;
+
+		.description {
+			font-size: 16px;
+			line-height: 25px;
+		}
+	}
+}
+
+@include mobile-large {
+	.root {
+		width: 330px;
+		height: 330px;
+
+		.description {
+			font-size: 13px;
+			line-height: 20px;
+			padding: 5px 0
+		}
+	}
+}
+
+@include mobile {
+	.root {
+		width: 300px;
+		height: 300px;
+
+		.description {
+			font-size: 12px;
+			line-height: 20px;
+			padding: 5px 0
+		}
+	}
+}

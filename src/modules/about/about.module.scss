@@ -1,5 +1,5 @@
 @use "@styles/func";
-@use "@styles/mixins";
+@use "@styles/mixins" as *;
 @use "@styles/variables";
 
 .root {
@@ -42,12 +42,12 @@
 }
 
 .gradient1 {
-	background: var(--gradient-about-purple-white) -15% -15% / 150px 150px, var(--gradient-about-purple) -55% -55% / 300px 300px, var(--gradient-about-blue) 100% 140% / 230px 230px, var(--gradient-about-green) 50% 160% / 230px 230px;
+	background: var(--gradient-about-purple-white) -15% -15% / 30% 30%, var(--gradient-about-purple) -55% -55% / 60% 60%, var(--gradient-about-blue) 100% 140% / 45% 45%, var(--gradient-about-green) 50% 160% / 45% 45%;
 	background-repeat: no-repeat;
 }
 
 .gradient2 {
-	background: var(--gradient-about-blue) 100% -40% / 230px 230px, var(--gradient-about-green) 50% -60% / 230px 230px;
+	background: var(--gradient-about-blue) 100% -40% / 45% 45%, var(--gradient-about-green) 50% -60% / 45% 45%;
 	background-repeat: no-repeat;
 }
 
@@ -75,6 +75,66 @@
 
 
 .gradient4 {
-	background: var(--gradient-about-purple-white) 120% 130% / 200px 200px, var(--gradient-about-purple) 250% 300% / 400px 400px;
+	background: var(--gradient-about-purple-white) 120% 130% / 40% 40%, var(--gradient-about-purple) 250% 300% / 80% 80%;
 	background-repeat: no-repeat;
+}
+
+
+@include desktop {
+	.title {
+		font-size: 50px;
+		gap: 14px;
+		line-height: 80px;
+
+		.icon {
+			width: 45px;
+			height: 45px;
+		}
+	}
+}
+
+@include tablet {
+	.title {
+		font-size: 43px;
+		gap: 10px;
+		line-height: 70px;
+
+		.icon {
+			width: 40px;
+			height: 40px;
+		}
+	}
+}
+
+@include tablet-small {
+	.title {
+		font-size: 43px;
+		gap: 10px;
+		line-height: 70px;
+		writing-mode:horizontal-tb;
+		transform: rotate(0deg);
+
+		.icon {
+			width: 40px;
+			height: 40px;
+		}
+	}
+
+	.firstline {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.secondline {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.root{
+		gap: 10px;
+	}
 }
