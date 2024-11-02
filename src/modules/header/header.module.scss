@@ -1,8 +1,6 @@
 @use '@styles/func';
 @use '@styles/mixins';
 
-
-
 .nav{
 	padding: 30px 0;
 	list-style: none;
@@ -20,20 +18,4 @@
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--color-white-default);
   }
-}
-
-.navbarpoint{
-	gap: 15px;
-	display: flex;
-	flex-direction: column;
-	position: fixed;
-	right: 2%;
-	top: 40%;
-
-	span{
-		width: 20px;
-		height: 20px;
-		border-radius: 50%;
-		border: 1px solid var(--color-white-default);
-	}
 }

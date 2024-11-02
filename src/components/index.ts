@@ -1,2 +1,2 @@
 export { Dialog } from './dialog'
-export { Intro } from './intro'
+export { Intro } from '../modules/intro'
