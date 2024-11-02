@@ -14,24 +14,38 @@
 	border-radius: 20px;
 
 
-	p {
+	.description {
 		padding: 15px 0;
 		font-family: var(--font-montserrat);
 		font-weight: 500;
 		font-size: 20px;
 		line-height: 30px;
 	}
+
+
+
+	p::before {
+    content: '{';
+    color: var(--color-yelow);
+   }
+
+	p::after {
+	content: '}';
+	color: var(--color-yelow);
+	}
+
+	span::before {
+    content: '<';
+    color: var(--color-blue);
+  }
+
+	span::after {
+		content: '>';
+		color: var(--color-blue);
+	}
+
 }
 
 .title {
 	@include h2
 }
-
-.blue {
-	color: var(--color-blue);
-}
-
-.yelow {
-	color: var(--color-yelow);
-}
-

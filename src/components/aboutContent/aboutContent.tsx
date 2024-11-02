@@ -10,7 +10,11 @@ const AboutContent: FC<AboutContentProps> = ({ className, title, description}) =
   return (
     <div className={rootClassName}>
       <h2 className={styles.title}>{title}</h2>
-      <p><span className={styles.blue}>{`<`}</span>text<span className={styles.blue}>{`>`}</span><br /><span className={styles.yelow}>{`{`}</span>{description}<span className={styles.yelow}>{`}`}</span><br/><span className={styles.blue}>{`<`}</span>/text<span className={styles.blue}>{`>`}</span></p>
+      <div className={styles.description}>
+        <span>text</span>
+        <p>{description}</p>
+        <span>/text</span>
+      </div>
     </div>
   )
 }
