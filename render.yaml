@@ -1,2 +1,0 @@
-buildCommand: yarn run build
-publishDir: build
