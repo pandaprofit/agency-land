@@ -5,136 +5,125 @@
 .root {
 	display: flex;
 	flex-direction: column;
-}
 
-.title{
-	writing-mode: vertical-rl;
-	transform: rotate(180deg);
-	display: flex;
-	justify-content: end;
-	align-items: center;
-	font-family: var(--font-unbounded);
-	font-weight: 700;
-	color: var(--color-white-default);
-	gap: 16px;
-	font-size: 64px;
-	line-height: 96px;
-
-	span {
-		display: flex;
-		align-items: start;
-	}
-}
-
-.firstline {
-	display: flex;
-	justify-content: end;
-}
-
-.secondline {
-	display: flex;
-	justify-content: start;
-}
-
-.icon {
-	width: 48px;
-	height: 48px;
-}
-
-.gradient1 {
-	background: var(--gradient-about-purple-white) -15% -15% / 30% 30%, var(--gradient-about-purple) -55% -55% / 60% 60%, var(--gradient-about-blue) 100% 140% / 45% 45%, var(--gradient-about-green) 50% 160% / 45% 45%;
-	background-repeat: no-repeat;
-}
-
-.gradient2 {
-	background: var(--gradient-about-blue) 100% -40% / 45% 45%, var(--gradient-about-green) 50% -60% / 45% 45%;
-	background-repeat: no-repeat;
-}
-
-.gradient3 {
-	position: relative;
-	overflow: hidden;
-}
-
-.gradient3::before {
-	content: "";
-	position: absolute;
-	top: -20%;
-	left: 50%;
-	width: 70%;
-	height: 70%;
-	background: radial-gradient(farthest-side, #ccb8e71c 60%, #ccb8e700 0%, transparent) 50% 50% / 5% 70%,
-							radial-gradient(farthest-side, #ccb8e71c 60%, #ccb8e700 0%, transparent) 50% 50% / 70% 5%,
-							radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 10% 60%,
-							radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 60% 10%,
-							radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 50% 25%,
-							radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 25% 50%;
-	background-repeat: no-repeat;
-	transform: rotate(60deg);
-}
-
-
-.gradient4 {
-	background: var(--gradient-about-purple-white) 120% 130% / 40% 40%, var(--gradient-about-purple) 250% 300% / 80% 80%;
-	background-repeat: no-repeat;
-}
-
-
-@include desktop {
-	.title {
-		font-size: 50px;
-		gap: 14px;
-		line-height: 80px;
-
-		.icon {
-			width: 45px;
-			height: 45px;
-		}
-	}
-}
-
-@include tablet {
-	.title {
-		font-size: 43px;
+	@include tablet-small {
 		gap: 10px;
-		line-height: 70px;
-
-		.icon {
-			width: 40px;
-			height: 40px;
-		}
-	}
-}
-
-@include tablet-small {
-	.title {
-		font-size: 43px;
-		gap: 10px;
-		line-height: 70px;
-		writing-mode:horizontal-tb;
-		transform: rotate(0deg);
-
-		.icon {
-			width: 40px;
-			height: 40px;
-		}
 	}
 
 	.firstline {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 10px;
+		justify-content: end;
+
+		@include tablet-small {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.title{
+			writing-mode: vertical-rl;
+			transform: rotate(180deg);
+			display: flex;
+			justify-content: end;
+			align-items: center;
+			font-family: var(--font-unbounded);
+			font-weight: 700;
+			color: var(--color-white-default);
+			gap: 16px;
+			font-size: 64px;
+			line-height: 180%;
+
+			@include desktop {
+				font-size: 50px;
+				gap: 14px;
+				line-height: 150%;
+			}
+
+			@include tablet {
+				font-size: 43px;
+				gap: 10px;
+				line-height: 150%;
+			}
+
+			@include tablet-small {
+				font-size: 43px;
+				gap: 10px;
+				line-height: 150%;
+				writing-mode:horizontal-tb;
+				transform: rotate(0deg);
+			}
+
+			.icon {
+				width: 48px;
+				height: 48px;
+
+				@include desktop {
+					width: 45px;
+					height: 45px;
+				}
+
+				@include tablet {
+					width: 40px;
+					height: 40px;
+				}
+
+				@include tablet-small {
+					width: 40px;
+					height: 40px;
+				}
+			}
+		}
+
+		.gradient1 {
+			background: var(--gradient-about-purple-white) -15% -15% / 30% 30%, var(--gradient-about-purple) -55% -55% / 60% 60%, var(--gradient-about-blue) 100% 140% / 45% 45%, var(--gradient-about-green) 50% 160% / 45% 45%;
+			background-repeat: no-repeat;
+		}
+
+		.gradient2 {
+			background: var(--gradient-about-blue) 100% -40% / 45% 45%, var(--gradient-about-green) 50% -60% / 45% 45%;
+			background-repeat: no-repeat;
+		}
 	}
+
+
 
 	.secondline {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 10px;
-	}
+		justify-content: start;
 
-	.root{
-		gap: 10px;
+		@include tablet-small {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.gradient3 {
+			position: relative;
+			overflow: hidden;
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: -20%;
+				left: 50%;
+				width: 70%;
+				height: 70%;
+				background: radial-gradient(farthest-side, #ccb8e71c 60%, #ccb8e700 0%, transparent) 50% 50% / 5% 70%,
+										radial-gradient(farthest-side, #ccb8e71c 60%, #ccb8e700 0%, transparent) 50% 50% / 70% 5%,
+										radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 10% 60%,
+										radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 60% 10%,
+										radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 50% 25%,
+										radial-gradient(farthest-side, #ccb8e78c 30%, #ccb8e78f 0%, transparent) 50% 50% / 25% 50%;
+				background-repeat: no-repeat;
+				transform: rotate(60deg);
+			}
+		}
+
+		.gradient4 {
+			background: var(--gradient-about-purple-white) 120% 130% / 40% 40%, var(--gradient-about-purple) 250% 300% / 80% 80%;
+			background-repeat: no-repeat;
+		}
 	}
 }
