@@ -8,4 +8,4 @@ services:
     envVars:
       - key: REACT_APP_API_URL
         value: https://api.example.com
-    branch: main
+    branch: master
