@@ -1,2 +1,2 @@
-buildCommand: npm run build
+buildCommand: yarn run build
 publishDir: build
