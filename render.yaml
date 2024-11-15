@@ -1,11 +1,2 @@
-services:
-  - type: web
-    name: agency-site
-    env: static
-    buildCommand: yarn install && yarn run build
-    startCommand: yarn run start
-    staticPublishPath: build
-    envVars:
-      - key: REACT_APP_API_URL
-        value: https://api.example.com
-    branch: master
+buildCommand: npm run build
+publishDir: build
