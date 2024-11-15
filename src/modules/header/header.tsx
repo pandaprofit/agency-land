@@ -3,7 +3,7 @@ import styles from './header.module.scss'
 
 const Header: FC = () => {
   return (
-    <nav>
+		<nav>
 			<ul className={styles.nav}>
 				<li>О Нас</li>
 				<li>Портфолио</li>

@@ -1,5 +1,5 @@
 @use "@styles/func";
-@use "@styles/mixins";
+@use "@styles/mixins" as *;
 @use "@styles/variables";
 
 .root {
@@ -7,25 +7,93 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 250px 0 280px;
-	background: var(--gradient-blue), var(--gradient-azure), var(--gradient-pink), var(--gradient-yelow);
+	background: var(--gradient-blue) 60% 0% / 500px 500px, var(--gradient-azure) 80% 20% / 300px 300px, var(--gradient-pink) 73% 55% / 400px 400px, var(--gradient-yelow) 80% 90% / 300px 300px;
 	background-repeat: no-repeat;
-}
 
-
-.description{
-	margin: 0;
-	font-weight: 300;
-	font-size: 40px;
-	line-height: 60px;
-	color: white;
-	padding-left: 25px;
-	font-family: var(--font-roboto);
-
-	.highlighted{
-		font-weight: 600;
+	@include desktop {
+		background: var(--gradient-blue) 50% 0% / 500px 500px, var(--gradient-azure) 80% 20% / 300px 300px, var(--gradient-pink) 73% 55% / 400px 400px, var(--gradient-yelow) 80% 90% / 300px 300px;
+		background-repeat: no-repeat;
 	}
 
-	.signs{
-		font-weight: 400;
+	@include tablet {
+		background: var(--gradient-blue) 30% 0% / 500px 500px, var(--gradient-azure) 80% 20% / 300px 300px, var(--gradient-pink) 73% 55% / 400px 400px, var(--gradient-yelow) 80% 100% / 300px 300px;
+		background-repeat: no-repeat;
+		padding: 200px 0;
+	}
+
+	@include tablet-small {
+		background: var(--gradient-blue) 25% 0% / 350px 350px, var(--gradient-azure) 75% 15% / 200px 200px, var(--gradient-pink) 70% 40% / 300px 300px, var(--gradient-yelow) 77% 80% / 200px 200px;
+		background-repeat: no-repeat;
+		padding: 150px 0;
+	}
+
+	@include mobile-large {
+		background: var(--gradient-blue) 10% 0% / 350px 350px, var(--gradient-azure) 80% 15% / 200px 200px, var(--gradient-pink) 70% 60% / 300px 300px, var(--gradient-yelow) 80% 100% / 200px 200px;
+		background-repeat: no-repeat;
+	}
+
+	@include mobile {
+		background: var(--gradient-blue) 10% 10% / 250px 250px, var(--gradient-azure) 75% 20% / 150px 150px, var(--gradient-pink) 70% 52% / 250px 250px, var(--gradient-yelow) 80% 83% / 150px 150px;
+		background-repeat: no-repeat;
+	}
+
+	.title {
+		@include tablet {
+			font-size: 90px;
+			line-height: 110px;
+		}
+
+		@include tablet-small {
+			font-size: 78px;
+			line-height: 95px;
+		}
+
+		@include mobile-large {
+			font-size: 58px;
+			line-height: 75px;
+		}
+
+		@include mobile {
+			font-size: 50px;
+			line-height: 70px;
+		}
+	}
+
+	.description{
+		margin: 0;
+		font-weight: 300;
+		font-size: 40px;
+		line-height: 60px;
+		color: white;
+		padding-left: 25px;
+		font-family: var(--font-roboto);
+
+		.highlighted{
+			font-weight: 600;
+		}
+
+		.signs{
+			font-weight: 400;
+		}
+
+		@include tablet {
+			font-size: 35px;
+			line-height: 50px;
+		}
+
+		@include tablet-small {
+			font-size: 30px;
+			line-height: 45px;
+		}
+
+		@include mobile-large {
+			font-size: 20px;
+			line-height: 35px;
+		}
+
+		@include mobile {
+			font-size: 18px;
+			line-height: 30px;
+		}
 	}
 }

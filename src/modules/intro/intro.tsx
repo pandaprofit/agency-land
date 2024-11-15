@@ -10,7 +10,7 @@ const Intro: FC<IntroProps> = ({className}) => {
   return (
     <div className={rootClassName}>
       <div>
-				<h1>
+				<h1 className={styles.title}>
 					{`{IT NAME`}<br/>{`AGENCY}`}
 				</h1>
 				<p className={styles.description}>
