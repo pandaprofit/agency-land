@@ -1,17 +1,11 @@
 services:
-  - type: web # A Python web service named django-app running on a free instance
-    plan: free
-    name: django-app
-    runtime: python
-    repo: https://github.com/render-examples/django.git
-    buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"
+  - type: static_site
+    name: agency-site
+    env: static
+    buildCommand: yarn install && yarn run build
+    startCommand: yarn run start
+    staticPublishPath: build
     envVars:
-      - key: DATABASE_URL # Sets DATABASE_URL to the connection string of the django-app-db database
-        fromDatabase:
-          name: django-app-db
-          property: connectionString
-
-databases:
-  - name: django-app-db # A PostgreSQL database named django-app-db running on a free instance
-    plan: free
+      - key: REACT_APP_API_URL
+        value: https://api.example.com
+    branch: main
