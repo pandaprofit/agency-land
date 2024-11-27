@@ -1,7 +1,7 @@
 @use '@styles/func';
 @use '@styles/mixins' as *;
 
-.nav{
+.nav {
 	padding: 30px 0;
 	list-style: none;
 	display: flex;
@@ -31,7 +31,7 @@
 		line-height: 25px;
 	}
 
-  li:hover{
+  li:hover {
     color: transparent;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--color-white-default);
