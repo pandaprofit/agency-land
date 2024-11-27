@@ -1,10 +1,17 @@
 import { FC } from 'react'
-
-import Navigation from './navigation'
+import styles from './header.module.scss'
 
 const Header: FC = () => {
   return (
-    <Navigation />
+		<nav>
+			<ul className={styles.nav}>
+				<li>О Нас</li>
+				<li>Портфолио</li>
+				<li>Принципы работы</li>
+				<li>Услуги</li>
+				<li>Контакты</li>
+			</ul>
+	</nav>
   )
 }
 
