@@ -1,7 +1,5 @@
 @use '@styles/func';
-@use '@styles/mixins';
-
-
+@use '@styles/mixins' as *;
 
 .nav{
 	padding: 30px 0;
@@ -15,25 +13,27 @@
 	color: var(--color-white-default);
 	font-family: var(--font-dm-sans);
 
+	@include tablet {
+		gap: 40px;
+		font-size: 16px;
+		line-height: 27px;
+	}
+
+	@include tablet-small {
+		gap: 25px;
+		font-size: 13px;
+		line-height: 27px;
+	}
+
+	@include mobile-large {
+		gap: 15px;
+		font-size: 10px;
+		line-height: 25px;
+	}
+
   li:hover{
     color: transparent;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--color-white-default);
   }
-}
-
-.navbarpoint{
-	gap: 15px;
-	display: flex;
-	flex-direction: column;
-	position: fixed;
-	right: 2%;
-	top: 40%;
-
-	span{
-		width: 20px;
-		height: 20px;
-		border-radius: 50%;
-		border: 1px solid var(--color-white-default);
-	}
 }

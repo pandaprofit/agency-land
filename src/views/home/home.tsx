@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import styles from './home.module.scss'
 import { HomeProps } from './home.types'
-import { Intro } from '@/components/intro'
+import { Intro } from '@modules/intro'
 
 
 const Home: FC<HomeProps> = ({ className }) => {
