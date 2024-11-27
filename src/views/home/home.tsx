@@ -6,6 +6,8 @@ import classNames from 'classnames'
 import styles from './home.module.scss'
 import { HomeProps } from './home.types'
 import { Intro } from '@/components/intro'
+import { About } from '@/modules/about'
+
 
 
 const Home: FC<HomeProps> = ({ className }) => {
@@ -14,6 +16,7 @@ const Home: FC<HomeProps> = ({ className }) => {
   return (
     <main className={rootClassName}>
       <Intro />
+      <About />
     </main>
   )
 }

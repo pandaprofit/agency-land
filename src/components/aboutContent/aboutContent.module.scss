@@ -1,0 +1,115 @@
+@use "@styles/func";
+@use "@styles/mixins" as *;
+@use "@styles/variables";
+
+
+.root {
+	padding: 20px;
+	display: flex;
+	width: 500px;
+	height: 500px;
+	flex-direction: column;
+	color: var(--color-white-default);
+	border: solid 2px;
+	border-radius: 20px;
+
+
+	.description {
+		padding: 15px 0;
+		font-family: var(--font-montserrat);
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 30px;
+	}
+
+
+
+	p::before {
+    content: '{';
+    color: var(--color-yelow);
+   }
+
+	p::after {
+	content: '}';
+	color: var(--color-yelow);
+	}
+
+	span::before {
+    content: '<';
+    color: var(--color-blue);
+  }
+
+	span::after {
+		content: '>';
+		color: var(--color-blue);
+	}
+
+}
+
+.title {
+	@include h2
+}
+
+@include desktop {
+	.root {
+		width: 420px;
+		height: 420px;
+
+		.description {
+			font-size: 16px;
+			line-height: 25px;
+		}
+	}
+}
+
+@include tablet {
+	.root {
+		width: 320px;
+		height: 320px;
+		padding: 12px;
+
+		.description {
+			font-size: 13px;
+			line-height: 20px;
+			padding: 5px 0
+		}
+	}
+}
+
+@include tablet-small {
+	.root {
+		width: 420px;
+		height: 420px;
+
+		.description {
+			font-size: 16px;
+			line-height: 25px;
+		}
+	}
+}
+
+@include mobile-large {
+	.root {
+		width: 330px;
+		height: 330px;
+
+		.description {
+			font-size: 13px;
+			line-height: 20px;
+			padding: 5px 0
+		}
+	}
+}
+
+@include mobile {
+	.root {
+		width: 300px;
+		height: 300px;
+
+		.description {
+			font-size: 12px;
+			line-height: 20px;
+			padding: 5px 0
+		}
+	}
+}

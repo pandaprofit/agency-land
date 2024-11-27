@@ -12,13 +12,6 @@ const Navigation: FC = () => (
 				<li>Услуги</li>
 				<li>Контакты</li>
 			</ul>
-			<div className={styles.navbarpoint}>
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
 
 	</nav>
 )
