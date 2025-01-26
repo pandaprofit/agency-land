@@ -3,6 +3,7 @@ import { Footer } from '@modules/footer'
 import { Header } from '@modules/header'
 
 import '@styles/global.scss'
+import './globals.css'
 
 import localFont from 'next/font/local'
 import { Provider } from '@service/provider'
@@ -71,12 +72,14 @@ export default function RootLayout({
   children: ReactNode
 }>) {
   return (
-    <html lang="ru">
-      <body className={`${dm_sans.variable} ${unbounded.variable} ${roboto.variable} ${montserrat.variable}`}>
+    <html lang="ru" data-theme="retro">
+      <body className={`${dm_sans.variable} ${unbounded.variable} ${roboto.variable} ${montserrat.variable} min-h-screen flex flex-col`}>
         <Provider>
-          <div id="root">
+          <div id="root" className="flex flex-col min-h-screen">
             <Header />
-            {children}
+            <main className="flex-grow">
+              {children}
+            </main>
             <Footer />
           </div>
 

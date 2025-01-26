@@ -1,0 +1,1 @@
+export { default as DaysiTemplate } from './daysiTemplate'
