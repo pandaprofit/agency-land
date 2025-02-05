@@ -1,3 +1,6 @@
 export { AboutContent } from './aboutContent'
+export { ChoiseToggles } from './choiseToggles'
+export { DaisyGrid } from './daisyGrid'
 export { DaysiTemplate } from './daysiTemplate'
 export { Dialog } from './dialog'
+export { Game } from './game'

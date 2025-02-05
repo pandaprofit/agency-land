@@ -1,0 +1,58 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {}
+
+.game {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.snowfall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  left: var(--position);
+  width: var(--size);
+  height: var(--size);
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: snowfall var(--duration) linear var(--delay) infinite;
+  filter: blur(1px);
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
