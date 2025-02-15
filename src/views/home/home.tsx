@@ -15,11 +15,15 @@ const Home: FC<HomeProps> = ({ className }) => {
 
   return (
     <main className={classNames(rootClassName, "flex flex-col gap-[60px]")}>
-      <Introduce />
-      <Intro />
-      <About />
-      <DaisyUltraTrash />
-      <DaisyGrid />
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col gap-[60px]">
+          <Introduce />
+          <Intro />
+          <About />
+          <DaisyUltraTrash />
+          <DaisyGrid />
+        </div>
+      </div>
     </main>
   )
 }

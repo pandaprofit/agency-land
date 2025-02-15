@@ -27,7 +27,7 @@ const DaisyGrid: FC<DaisyGridProps> = ({
   // lg: 3 колонки (небольшие десктопы)
   // xl: 4 колонки (большие экраны)
   const rootClassName = classNames(
-    'grid gap-4 p-4',
+    'grid gap-4',
     'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
     'grid-rows-[repeat(4,minmax(300px,auto))] lg:grid-rows-[repeat(4,minmax(20vh,auto))]', // 20vh на десктопе
     className
