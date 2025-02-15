@@ -12,7 +12,6 @@ import { Introduce } from '@/components/introduce'
 
 const DaisyGrid: FC<DaisyGridProps> = ({
   className,
-  children
 }) => {
   const [activeToggle, setActiveToggle] = useState<'cheap' | 'fast' | 'quality' | null>(null)
   const [visibleTooltip, setVisibleTooltip] = useState<'cheap' | 'fast' | 'quality' | null>(null)
@@ -32,42 +31,6 @@ const DaisyGrid: FC<DaisyGridProps> = ({
     'grid-rows-[repeat(4,minmax(300px,auto))] lg:grid-rows-[repeat(4,minmax(20vh,auto))]', // 20vh на десктопе
     className
   )
-
-  const hideTooltip = (onComplete?: () => void) => {
-    if (tooltipRef.current && textRef.current && imageRef.current) {
-      const tl = gsap.timeline({
-        onComplete: () => {
-          onComplete?.()
-          setVisibleTooltip(null)
-        }
-      })
-
-      tl.to(imageRef.current, {
-        autoAlpha: 0,
-        duration: 0.3,
-        ease: "elastic.in(1.2, 0.5)"
-      })
-        .to(textRef.current, {
-          autoAlpha: 0,
-          duration: 0.25,
-          ease: "elastic.in(1, 0.5)"
-        }, "-=0.2")
-        .to(tooltipRef.current, {
-          autoAlpha: 0,
-          duration: 0.25,
-          ease: "elastic.in(1.2, 0.5)"
-        }, "-=0.15")
-
-      timelineRef.current = tl
-    } else {
-      onComplete?.()
-      setVisibleTooltip(null)
-    }
-  }
-
-  const showTooltip = (newToggle: 'cheap' | 'fast' | 'quality') => {
-    setVisibleTooltip(newToggle)
-  }
 
   useEffect(() => {
     // Очищаем предыдущую анимацию
@@ -140,7 +103,7 @@ const DaisyGrid: FC<DaisyGridProps> = ({
 
       timelineRef.current = tl
     }
-  }, [activeToggle])
+  }, [activeToggle, visibleTooltip])
 
   useEffect(() => {
     if (visibleTooltip && tooltipRef.current && textRef.current && imageRef.current) {
