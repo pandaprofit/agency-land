@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #2D0A4E;
+  background: #F0F0E5;
   overflow: hidden;
   padding: 1rem;
 }
@@ -32,14 +32,14 @@
 
 .mainLetter {
   display: block;
-  color: #9333EA;
+  color: #A47764;
 }
 
 .overlayLetter {
   position: absolute;
   top: 0;
   left: 0;
-  color: #F0A500;
+  color: #C39E88;
   mix-blend-mode: overlay;
   will-change: transform, opacity;
 }
@@ -52,7 +52,7 @@
 
 .mainPath {
   fill: none;
-  stroke: #9333EA;
+  stroke: #8B645A;
   stroke-width: 14;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -60,7 +60,7 @@
 
 .overlayPath {
   fill: none;
-  stroke: #F0A500;
+  stroke: #BBAA92;
   stroke-width: 14;
   stroke-linecap: round;
   stroke-linejoin: round;

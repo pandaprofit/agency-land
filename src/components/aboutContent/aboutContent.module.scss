@@ -9,8 +9,8 @@
 	width: 500px;
 	height: 500px;
 	flex-direction: column;
-	color: var(--color-white-default);
-	border: solid 2px;
+	color: #F0F0E5;
+	border: solid 2px #A47764;
 	border-radius: 20px;
 
 
@@ -26,28 +26,29 @@
 
 	p::before {
     content: '{';
-    color: var(--color-yelow);
+    color: #BBAA92;
    }
 
 	p::after {
 	content: '}';
-	color: var(--color-yelow);
+	color: #BBAA92;
 	}
 
 	span::before {
     content: '<';
-    color: var(--color-blue);
+    color: #8B645A;
   }
 
 	span::after {
 		content: '>';
-		color: var(--color-blue);
+		color: #8B645A;
 	}
 
 }
 
 .title {
-	@include h2
+	@include h2;
+	color: #A47764;
 }
 
 @include desktop {

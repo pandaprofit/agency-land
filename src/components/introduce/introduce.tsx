@@ -56,76 +56,76 @@ const Introduce: FC<IntroduceProps> = ({
 
   return (
     <div className={rootClassName} ref={containerRef}>
-      <svg viewBox="0 0 800 400" className={styles.svg}>
+      <svg viewBox="0 0 1200 400" className={styles.svg}>
         {/* S */}
         <path
           ref={setPathRef(0)}
-          d="M20,40 L100,40 L100,120 L20,120 L20,200 L100,200 L100,280 L20,280"
+          d="M50,80 L130,80 L130,160 L50,160 L50,240 L130,240 L130,320 L50,320"
           className={styles.mainPath}
         />
         <path
           ref={setOverlayRef(0)}
-          d="M18,38 L98,38 L98,118 L18,118 L18,198 L98,198 L98,278 L18,278"
+          d="M48,78 L128,78 L128,158 L48,158 L48,238 L128,238 L128,318 L48,318"
           className={styles.overlayPath}
         />
 
         {/* H */}
         <path
           ref={setPathRef(1)}
-          d="M140,40 L140,280 M140,160 L220,160 M220,40 L220,280"
+          d="M180,80 L180,320 M180,200 L260,200 M260,80 L260,320"
           className={styles.mainPath}
         />
         <path
           ref={setOverlayRef(1)}
-          d="M138,38 L138,278 M138,158 L218,158 M218,38 L218,278"
+          d="M178,78 L178,318 M178,198 L258,198 M258,78 L258,318"
           className={styles.overlayPath}
         />
 
         {/* A */}
         <path
           ref={setPathRef(2)}
-          d="M260,280 L340,40 L420,280 M285,200 L395,200"
+          d="M310,320 L390,80 L470,320 M340,240 L440,240"
           className={styles.mainPath}
         />
         <path
           ref={setOverlayRef(2)}
-          d="M258,278 L338,38 L418,278 M283,198 L393,198"
+          d="M308,318 L388,78 L468,318 M338,238 L438,238"
           className={styles.overlayPath}
         />
 
         {/* R */}
         <path
           ref={setPathRef(3)}
-          d="M460,40 L460,280 M460,40 L540,40 L540,160 L460,160 L540,280"
+          d="M520,80 L520,320 M520,80 L600,80 L600,200 L520,200 L600,320"
           className={styles.mainPath}
         />
         <path
           ref={setOverlayRef(3)}
-          d="M458,38 L458,278 M458,38 L538,38 L538,158 L458,158 L538,278"
+          d="M518,78 L518,318 M518,78 L598,78 L598,198 L518,198 L598,318"
           className={styles.overlayPath}
         />
 
         {/* K */}
         <path
           ref={setPathRef(4)}
-          d="M580,40 L580,280 M580,160 L660,40 M580,160 L660,280"
+          d="M650,80 L650,320 M650,200 L730,80 M650,200 L730,320"
           className={styles.mainPath}
         />
         <path
           ref={setOverlayRef(4)}
-          d="M578,38 L578,278 M578,158 L658,38 M578,158 L658,278"
+          d="M648,78 L648,318 M648,198 L728,78 M648,198 L728,318"
           className={styles.overlayPath}
         />
 
         {/* S */}
         <path
           ref={setPathRef(5)}
-          d="M700,40 L780,40 L780,120 L700,120 L700,200 L780,200 L780,280 L700,280"
+          d="M780,80 L860,80 L860,160 L780,160 L780,240 L860,240 L860,320 L780,320"
           className={styles.mainPath}
         />
         <path
           ref={setOverlayRef(5)}
-          d="M698,38 L778,38 L778,118 L698,118 L698,198 L778,198 L778,278 L698,278"
+          d="M778,78 L858,78 L858,158 L778,158 L778,238 L858,238 L858,318 L778,318"
           className={styles.overlayPath}
         />
       </svg>
