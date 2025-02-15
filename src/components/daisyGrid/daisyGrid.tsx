@@ -8,6 +8,7 @@ import styles from './daisyGrid.module.scss'
 import { DaisyGridProps } from './daisyGrid.types'
 import { ChoiseToggles } from '@/components/choiseToggles'
 import { Game } from '@/components/game'
+import { Introduce } from '@/components/introduce'
 
 const DaisyGrid: FC<DaisyGridProps> = ({
   className,
@@ -239,8 +240,8 @@ const DaisyGrid: FC<DaisyGridProps> = ({
     <div className="relative">
       <div className={rootClassName}>
         {/* Первый элемент - занимает 2 колонки и 2 строки */}
-        <div className="col-span-1 row-span-2 sm:col-span-2 xl:col-span-2 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-          <div className="h-full flex items-center justify-center">
+        <div className="col-span-1 row-span-2 rounded-box sm:col-span-2 xl:col-span-2 card bg-base-100 shadow-xl min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+          <div className="h-full flex items-center justify-center overflow-hidden">
             <Game />
           </div>
         </div>
@@ -260,9 +261,9 @@ const DaisyGrid: FC<DaisyGridProps> = ({
         </div>
 
         {/* Четвертый элемент - занимает 2 колонки и 1 строку */}
-        <div className="col-span-1 sm:col-span-2 xl:col-span-2 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[20vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+        <div className="col-span-1 sm:col-span-2 xl:col-span-2 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[20vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl overflow-hidden">
           <div className="h-full flex items-center justify-center">
-
+            <Introduce />
           </div>
         </div>
 

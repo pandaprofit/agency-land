@@ -10,6 +10,7 @@ import { Intro } from '@/modules/intro'
 import { About } from '@/modules/about'
 import DaysiTemplate from '@/components/daysiTemplate/daysiTemplate'
 import DaisyGrid from '@/components/daisyGrid/daisyGrid'
+import Introduce from '@/components/introduce/introduce'
 
 const Home: FC<HomeProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
@@ -20,6 +21,7 @@ const Home: FC<HomeProps> = ({ className }) => {
 
   return (
     <main className={rootClassName}>
+      <Introduce />
       <Intro />
       <About />
 
