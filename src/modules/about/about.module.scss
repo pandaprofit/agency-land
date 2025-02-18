@@ -16,7 +16,7 @@
 
 	.firstline {
 		display: flex;
-		justify-content: end;
+		justify-content: flex-end;
 
 		@include tablet-small {
 			display: flex;
@@ -29,7 +29,7 @@
 			writing-mode: vertical-rl;
 			transform: rotate(180deg);
 			display: flex;
-			justify-content: end;
+			justify-content: flex-end;
 			align-items: center;
 			font-family: var(--font-unbounded);
 			font-weight: 700;
@@ -92,7 +92,7 @@
 
 	.secondline {
 		display: flex;
-		justify-content: start;
+		justify-content: flex-start;
 
 		@include tablet-small {
 			display: flex;

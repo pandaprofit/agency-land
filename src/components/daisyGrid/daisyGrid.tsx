@@ -8,12 +8,8 @@ import styles from './daisyGrid.module.scss'
 import { DaisyGridProps } from './daisyGrid.types'
 import { ChoiseToggles } from '@/components/choiseToggles'
 import { Game } from '@/components/game'
-import { Introduce } from '@/components/introduce'
 
-const DaisyGrid: FC<DaisyGridProps> = ({
-  className,
-  children
-}) => {
+const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
   const [activeToggle, setActiveToggle] = useState<'cheap' | 'fast' | 'quality' | null>(null)
   const [visibleTooltip, setVisibleTooltip] = useState<'cheap' | 'fast' | 'quality' | null>(null)
   const tooltipRef = useRef<HTMLDivElement>(null)
@@ -36,55 +32,7 @@ const DaisyGrid: FC<DaisyGridProps> = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [handleTooltip, visibleTooltip])
-
-  // Адаптивный грид:
-  // sm: 1 колонка (мобильные)
-  // md: 2 колонки (планшеты)
-  // lg: 3 колонки (небольшие десктопы)
-  // xl: 4 колонки (большие экраны)
-  const rootClassName = classNames(
-    'grid gap-4',
-    'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
-    'grid-rows-[repeat(4,minmax(300px,auto))] lg:grid-rows-[repeat(4,minmax(20vh,auto))]', // 20vh на десктопе
-    className
-  )
-
-  const hideTooltip = (onComplete?: () => void) => {
-    if (tooltipRef.current && textRef.current && imageRef.current) {
-      const tl = gsap.timeline({
-        onComplete: () => {
-          onComplete?.()
-          setVisibleTooltip(null)
-        }
-      })
-
-      tl.to(imageRef.current, {
-        autoAlpha: 0,
-        duration: 0.3,
-        ease: "elastic.in(1.2, 0.5)"
-      })
-        .to(textRef.current, {
-          autoAlpha: 0,
-          duration: 0.25,
-          ease: "elastic.in(1, 0.5)"
-        }, "-=0.2")
-        .to(tooltipRef.current, {
-          autoAlpha: 0,
-          duration: 0.25,
-          ease: "elastic.in(1.2, 0.5)"
-        }, "-=0.15")
-
-      timelineRef.current = tl
-    } else {
-      onComplete?.()
-      setVisibleTooltip(null)
-    }
-  }
-
-  const showTooltip = (newToggle: 'cheap' | 'fast' | 'quality') => {
-    setVisibleTooltip(newToggle)
-  }
+  }, [handleTooltip])
 
   useEffect(() => {
     // Очищаем предыдущую анимацию
@@ -157,7 +105,55 @@ const DaisyGrid: FC<DaisyGridProps> = ({
 
       timelineRef.current = tl
     }
-  }, [activeToggle])
+  }, [activeToggle, visibleTooltip])
+
+  // Адаптивный грид:
+  // sm: 1 колонка (мобильные)
+  // md: 2 колонки (планшеты)
+  // lg: 3 колонки (небольшие десктопы)
+  // xl: 4 колонки (большие экраны)
+  const rootClassName = classNames(
+    'grid gap-4',
+    'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+    'grid-rows-[repeat(4,minmax(300px,auto))] lg:grid-rows-[repeat(4,minmax(20vh,auto))]', // 20vh на десктопе
+    className
+  )
+
+  const hideTooltip = (onComplete?: () => void) => {
+    if (tooltipRef.current && textRef.current && imageRef.current) {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          onComplete?.()
+          setVisibleTooltip(null)
+        }
+      })
+
+      tl.to(imageRef.current, {
+        autoAlpha: 0,
+        duration: 0.3,
+        ease: "elastic.in(1.2, 0.5)"
+      })
+        .to(textRef.current, {
+          autoAlpha: 0,
+          duration: 0.25,
+          ease: "elastic.in(1, 0.5)"
+        }, "-=0.2")
+        .to(tooltipRef.current, {
+          autoAlpha: 0,
+          duration: 0.25,
+          ease: "elastic.in(1.2, 0.5)"
+        }, "-=0.15")
+
+      timelineRef.current = tl
+    } else {
+      onComplete?.()
+      setVisibleTooltip(null)
+    }
+  }
+
+  const showTooltip = (newToggle: 'cheap' | 'fast' | 'quality') => {
+    setVisibleTooltip(newToggle)
+  }
 
   useEffect(() => {
     if (visibleTooltip && tooltipRef.current && textRef.current && imageRef.current) {
