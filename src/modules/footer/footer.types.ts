@@ -5,3 +5,7 @@ export interface FooterSocialItemI {
   href: string
   label: string
 }
+
+export interface FooterSocialProps {
+  items: FooterSocialItemI[]
+}
