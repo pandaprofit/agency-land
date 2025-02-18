@@ -8,10 +8,7 @@ import { ChoiseTogglesProps } from './choiseToggles.types'
 const ChoiseToggles: FC<ChoiseTogglesProps> = ({
   className,
   activeToggle,
-  setActiveToggle,
-  visibleTooltip,
-  setVisibleTooltip,
-  tooltipRef
+  setActiveToggle
 }) => {
   const rootClassName = classNames(styles.root, className)
 

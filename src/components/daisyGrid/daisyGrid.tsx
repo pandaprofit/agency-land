@@ -258,9 +258,6 @@ const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
             <ChoiseToggles
               activeToggle={activeToggle}
               setActiveToggle={setActiveToggle}
-              visibleTooltip={visibleTooltip}
-              setVisibleTooltip={setVisibleTooltip}
-              tooltipRef={tooltipRef}
             />
           </div>
         </div>
