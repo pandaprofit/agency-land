@@ -3,7 +3,6 @@
 import { FC } from 'react'
 import classNames from 'classnames'
 import { DaisyTrashProps } from './daisyTrash.types'
-import styles from './daisyTrash.module.scss'
 
 const DaisyTrash: FC<DaisyTrashProps> = ({
   className,

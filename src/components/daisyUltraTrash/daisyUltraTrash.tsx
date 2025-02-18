@@ -3,7 +3,6 @@
 import { FC, useCallback } from 'react'
 import classNames from 'classnames'
 import { DaisyUltraTrashProps } from './daisyUltraTrash.types'
-import styles from './daisyUltraTrash.module.scss'
 import DaysiTemplate from '@/components/daysiTemplate/daysiTemplate'
 import { DaisyTrash } from '@/components/daisyTrash'
 

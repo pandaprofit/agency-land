@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useState, useRef, useEffect } from 'react'
+import { FC, useCallback, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import Image from 'next/image'
 import { gsap } from "gsap";
@@ -20,6 +20,23 @@ const DaisyGrid: FC<DaisyGridProps> = ({
   const textRef = useRef<HTMLSpanElement>(null)
   const imageRef = useRef<HTMLImageElement>(null)
   const timelineRef = useRef<gsap.core.Timeline | null>(null)
+
+  const handleTooltip = useCallback(() => {
+    setVisibleTooltip(null)
+  }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
+        handleTooltip()
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [handleTooltip, visibleTooltip])
 
   // Адаптивный грид:
   // sm: 1 колонка (мобильные)
@@ -278,7 +295,13 @@ const DaisyGrid: FC<DaisyGridProps> = ({
         <div className="col-span-1 row-span-2 sm:col-span-2 xl:col-span-2 col-start-3 row-start-3 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
           <div className="h-full flex items-center justify-center relative overflow-hidden">
             {renderTooltip()}
-            <ChoiseToggles onToggleChange={setActiveToggle} />
+            <ChoiseToggles
+              activeToggle={activeToggle}
+              setActiveToggle={setActiveToggle}
+              visibleTooltip={visibleTooltip}
+              setVisibleTooltip={setVisibleTooltip}
+              tooltipRef={tooltipRef}
+            />
           </div>
         </div>
       </div>

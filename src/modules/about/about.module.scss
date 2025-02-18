@@ -4,7 +4,11 @@
 
 .root {
 	display: flex;
-	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	padding: 100px 0;
+	background: var(--gradient-about-purple) 60% 0% / 500px 500px, var(--gradient-about-purple-white) 80% 20% / 300px 300px, var(--gradient-about-blue) 73% 55% / 400px 400px, var(--gradient-about-green) 80% 90% / 300px 300px;
+	background-repeat: no-repeat;
 
 	@include tablet-small {
 		gap: 10px;
@@ -86,8 +90,6 @@
 		}
 	}
 
-
-
 	.secondline {
 		display: flex;
 		justify-content: start;
@@ -126,4 +128,11 @@
 			background-repeat: no-repeat;
 		}
 	}
+}
+
+.content {
+	display: flex;
+	justify-content: flex-start;
+	gap: 20px;
+	flex-wrap: wrap;
 }
