@@ -1,22 +1,23 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import classNames from 'classnames'
 import styles from './choiseToggles.module.scss'
 import { ChoiseTogglesProps } from './choiseToggles.types'
 
 const ChoiseToggles: FC<ChoiseTogglesProps> = ({
   className,
-  onToggleChange
+  activeToggle,
+  setActiveToggle,
+  visibleTooltip,
+  setVisibleTooltip,
+  tooltipRef
 }) => {
-  const [activeToggle, setActiveToggle] = useState<'cheap' | 'fast' | 'quality' | null>(null)
-
   const rootClassName = classNames(styles.root, className)
 
   const handleToggleChange = (toggle: 'cheap' | 'fast' | 'quality') => {
     const newValue = activeToggle === toggle ? null : toggle
     setActiveToggle(newValue)
-    onToggleChange?.(newValue)
   }
 
   return (
