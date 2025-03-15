@@ -64,6 +64,7 @@ const Introduce: FC<IntroduceProps> = ({
     if (el) pathRefs.current[index] = el
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const setOverlayRef = (index: number) => (el: SVGPathElement | null) => {
     if (el) overlayRefs.current[index] = el
   }
