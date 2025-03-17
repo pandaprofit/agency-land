@@ -8,6 +8,8 @@ import styles from './daisyGrid.module.scss'
 import { DaisyGridProps } from './daisyGrid.types'
 import { ChoiseToggles } from '@/components/choiseToggles'
 import { Game } from '@/components/game'
+import './daisyGrid.css'
+import Link from 'next/link';
 
 const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
   const [activeToggle, setActiveToggle] = useState<'cheap' | 'fast' | 'quality' | null>(null)
@@ -224,10 +226,22 @@ const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
         </div>
 
         {/* Второй элемент - занимает 1 колонку и 2 строки */}
-        <div className="row-span-2 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-          <div className="h-full flex items-center justify-center">
-            <span className="text-base-content opacity-50 hover:opacity-100 transition-opacity text-lg lg:text-xl">Виджет 2 (1×2)</span>
-          </div>
+
+        <div className="row-span-2 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl portfolio-section">
+          <Link href="/portfolio">
+            <div className="h-full flex items-center justify-center portfolio-content">
+              <span className="text-base-content opacity-50 hover:opacity-100 transition-opacity text-lg lg:text-xl portfolio-title">Por2folio</span>
+              <div className='portfolio-image-container'>
+                <Image
+                  src="/images/MainPage/por2folio.png"
+                  alt="Por2folio"
+                  width={348}
+                  height={473}
+                  className='portfolio-image'
+                />
+              </div>
+            </div>
+          </Link>
         </div>
 
         {/* Третий элемент - занимает 1 колонку и 2 строки */}
