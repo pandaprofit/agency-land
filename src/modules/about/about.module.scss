@@ -5,6 +5,11 @@
 .root {
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	padding: 100px 0;
+	background: var(--gradient-about-purple) 60% 0% / 500px 500px, var(--gradient-about-purple-white) 80% 20% / 300px 300px, var(--gradient-about-blue) 73% 55% / 400px 400px, var(--gradient-about-green) 80% 90% / 300px 300px;
+	background-repeat: no-repeat;
 
 	@include tablet-small {
 		gap: 10px;
@@ -12,7 +17,7 @@
 
 	.firstline {
 		display: flex;
-		justify-content: end;
+		justify-content: flex-end;
 
 		@include tablet-small {
 			display: flex;
@@ -25,11 +30,11 @@
 			writing-mode: vertical-rl;
 			transform: rotate(180deg);
 			display: flex;
-			justify-content: end;
+			justify-content: flex-end;
 			align-items: center;
 			font-family: var(--font-unbounded);
 			font-weight: 700;
-			color: var(--color-white-default);
+			color: #A47764;
 			gap: 16px;
 			font-size: 64px;
 			line-height: 180%;
@@ -86,11 +91,9 @@
 		}
 	}
 
-
-
 	.secondline {
 		display: flex;
-		justify-content: start;
+		justify-content: flex-start;
 
 		@include tablet-small {
 			display: flex;
@@ -126,4 +129,11 @@
 			background-repeat: no-repeat;
 		}
 	}
+}
+
+.content {
+	display: flex;
+	justify-content: flex-start;
+	gap: 20px;
+	flex-wrap: wrap;
 }

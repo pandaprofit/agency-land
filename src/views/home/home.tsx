@@ -1,26 +1,29 @@
+'use client'
+
 import { FC } from 'react'
-
-
 import classNames from 'classnames'
-
 import styles from './home.module.scss'
 import { HomeProps } from './home.types'
-<<<<<<< HEAD
-import { Intro } from '@modules/intro'
-=======
-import { Intro } from '@/components/intro'
-import { About } from '@/modules/about'
-
->>>>>>> 22932c164a8ecfe04c729c98119d801203181b4e
-
+// import { Intro } from '@/modules/intro'
+// import { About } from '@/modules/about'
+import DaisyGrid from '@/components/daisyGrid/daisyGrid'
+import Introduce from '@/components/introduce/introduce'
+import { DaisyUltraTrash } from '@/components/daisyUltraTrash'
 
 const Home: FC<HomeProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
 
   return (
-    <main className={rootClassName}>
-      <Intro />
-      <About />
+    <main className={classNames(rootClassName, "flex flex-col gap-[60px]")}>
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col gap-[60px]">
+          <Introduce />
+          {/* <Intro /> */}
+          {/* <About /> */}
+          <DaisyUltraTrash />
+          <DaisyGrid />
+        </div>
+      </div>
     </main>
   )
 }

@@ -1,6 +1,5 @@
 @import 'mixins';
 
-
 :root {
   // colors
   --color-white-default: #fff;
@@ -13,23 +12,14 @@
   --color-blue-border: #dadcfa;
 
   // gradient
-<<<<<<< HEAD
   --gradient-blue: radial-gradient(farthest-side,#3700FF99 10%, #3700FF99 0%,transparent);
   --gradient-azure: radial-gradient(farthest-side,#00E5FF99 10%, #00E5FF99 0%,transparent);
   --gradient-pink: radial-gradient(farthest-side,#C877B099 10%, #C877B099 0%,transparent);
   --gradient-yelow: radial-gradient(farthest-side,#829900 10%, #829900 0%,transparent);
-=======
-  --gradient-blue: radial-gradient(farthest-side,#3700FF99 10%, #3700FF99 0%,transparent) 60% 0% / 500px 500px;
-  --gradient-azure: radial-gradient(farthest-side,#00E5FF99 10%, #00E5FF99 0%,transparent) 80% 20% / 300px 300px;
-  --gradient-pink: radial-gradient(farthest-side,#C877B099 10%, #C877B099 0%,transparent) 73% 55% / 400px 400px;
-  --gradient-yelow: radial-gradient(farthest-side,#829900 10%, #829900 0%,transparent) 80% 90% / 300px 300px;
   --gradient-about-purple: radial-gradient(farthest-side,#6C3CAF 10%, #6C3CAF 0%,transparent);
   --gradient-about-purple-white: radial-gradient(farthest-side,#c197fdaf 10%, #c197fdaf 0%,transparent);
   --gradient-about-blue: radial-gradient(farthest-side,#096bffc4 10%, #096bffc4 0%,transparent);
   --gradient-about-green: radial-gradient(farthest-side,#06FFF0A6 10%, #06FFF0A6 0%,transparent);
-
-
->>>>>>> 22932c164a8ecfe04c729c98119d801203181b4e
 }
 
 * {
@@ -57,7 +47,6 @@ body {
   @include text;
   color: var(--color-black-default);
   overflow-x: hidden;
-  background: #3C3B3B;
 }
 
 a {
@@ -108,7 +97,6 @@ button {
     flex-grow: 1;
   }
 }
-
 
 h1{
   @include h1

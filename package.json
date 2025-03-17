@@ -14,8 +14,10 @@
     "preinstall": "npx only-allow yarn"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
+    "gsap": "^3.12.7",
     "jotai": "^2.8.1",
     "next": "^14",
     "react": "^18",
@@ -30,8 +32,10 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.10.0",
     "@typescript-eslint/parser": "^7.10.0",
+    "autoprefixer": "10.4.16",
     "camelcase": "^8.0.0",
     "chalk": "^5.3.0",
+    "daisyui": "^4.12.23",
     "eslint": "^8",
     "eslint-config-next": "^14",
     "eslint-config-prettier": "^9.1.0",
@@ -39,14 +43,18 @@
     "husky": "^9.0.11",
     "inquirer": "^9.2.22",
     "inquirer-file-tree-selection-prompt": "^2.0.5",
+    "postcss": "8.4.31",
+    "postcss-import": "^16.1.0",
     "prettier": "^3.2.5",
     "sass": "^1.77.2",
     "stylelint": "^16.5.0",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-scss": "^6.3.0",
+    "tailwindcss": "3.3.0",
     "typescript": "^5"
   },
   "engines": {
     "node": "^20"
-  }
+  },
+  "packageManager": "yarn@1.22.19+sha512.ff4579ab459bb25aa7c0ff75b62acebe576f6084b36aa842971cf250a5d8c6cd3bc9420b22ce63c7f93a0857bc6ef29291db39c3e7a23aab5adfd5a4dd6c5d71"
 }

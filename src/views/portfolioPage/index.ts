@@ -1,0 +1,1 @@
+export { default as PortfolioPageView } from './portfolioPage'
