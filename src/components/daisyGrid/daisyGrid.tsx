@@ -10,6 +10,7 @@ import { ChoiseToggles } from '@/components/choiseToggles'
 import { Game } from '@/components/game'
 import './daisyGrid.css'
 import Link from 'next/link';
+import case1 from '@public/images/MainPage/por2folio.png'
 
 const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
   const [activeToggle, setActiveToggle] = useState<'cheap' | 'fast' | 'quality' | null>(null)
@@ -233,7 +234,7 @@ const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
               <span className="text-base-content opacity-50 hover:opacity-100 transition-opacity text-lg lg:text-xl portfolio-title">Por2folio</span>
               <div className='portfolio-image-container'>
                 <Image
-                  src="/images/mainPage/por2folio.png"
+                  src={case1}
                   alt="Por2folio"
                   width={348}
                   height={473}
