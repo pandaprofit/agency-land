@@ -233,7 +233,7 @@ const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
               <span className="text-base-content opacity-50 hover:opacity-100 transition-opacity text-lg lg:text-xl portfolio-title">Por2folio</span>
               <div className='portfolio-image-container'>
                 <Image
-                  src="/images/MainPage/por2folio.png"
+                  src="/images/mainPage/por2folio.png"
                   alt="Por2folio"
                   width={348}
                   height={473}
