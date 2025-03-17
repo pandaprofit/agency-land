@@ -3,6 +3,7 @@
 import { FC } from 'react'
 import Image from 'next/image'
 import styles from './game.module.scss'
+import siberianValley from '@public/images/game_background.png'
 
 export const Game: FC = () => {
   return (
@@ -18,7 +19,7 @@ export const Game: FC = () => {
         ))}
       </div>
       <Image
-        src="/images/game_background.png"
+        src={siberianValley}
         alt="Сибирская долина"
         width={800}
         height={30}
