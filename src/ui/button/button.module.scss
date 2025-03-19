@@ -3,45 +3,27 @@
 @use '@styles/mixins';
 
 .root {
-  @include mixins.reset-btn;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
-  font-size: func.rem(18);
-  line-height: func.rem(20);
-  color: var(--color-white-default);
-  background-color: var(--color-blue);
-  cursor: pointer;
-  transition: variables.$transition;
-  transition-property: color, background-color;
-  outline: none;
-  user-select: none;
 
-  &_sm {
-    height: func.rem(48);
-    padding: func.rem(12) func.rem(20);
-  }
+  padding: 10px 20px;
 
-  &_md {
-    height: func.rem(60);
-    padding: func.rem(20) func.rem(50);
+  border: 1px solid #8B645A;
+  border-radius: 10px;
 
-    @include mixins.tablet {
-      height: func.rem(50);
-      padding: func.rem(15) func.rem(50);
-    }
-  }
+  color: #8B645A;
 
-  &_white {
-    color: var(--color-black-default);
-    background-color: var(--color-white-default);
-  }
+  transition: color 0.3s ease, background-color 0.3s ease;
 
-  &:disabled {
-    color: var(--color-black);
-    background-color: var(--color-grey-hover);
-    pointer-events: none;
+  font-family: var(--font-unbounded);
+  font-weight: 400;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #8B645A;
+    color: white;
+
+    transition: color 0.3s ease, background-color 0.3s ease;
   }
 }

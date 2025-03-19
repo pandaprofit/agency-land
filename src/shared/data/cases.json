@@ -51,16 +51,9 @@
 	{
 		"imagePreview": "/images/portfolio/kim.png",
 		"title": "K.KIM",
-		"stack": ["Next.js", "TypeScript", "SCSS", "GSAP"],
+		"stack": ["React", "Next.js", "TypeScript", "SCSS", "GSAP"],
 		"isDesign": true,
 		"link": "https://kimmy-five.vercel.app/"
-	},
-	{
-		"imagePreview": "/images/portfolio/moonton.png",
-		"title": "Moon TON",
-		"stack": ["Webflow"],
-		"isDesign": true,
-		"link": "https://moontoon-wheat.vercel.app/"
 	},
 	{
 		"imagePreview": "/images/portfolio/moonton.png",

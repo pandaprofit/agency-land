@@ -1,5 +1,6 @@
 export { AboutContent } from './aboutContent'
 export { CaseItem } from './caseItem'
+export { CasesFilter } from './casesFilter'
 export { ChoiseToggles } from './choiseToggles'
 export { DaisyGrid } from './daisyGrid'
 export { DaisyTrash } from './daisyTrash'
