@@ -1,5 +1,9 @@
 @use "@styles/func";
 @use "@styles/mixins";
 @use "@styles/variables";
-  
-.root {}
+
+.root {
+	max-width: 1440px;
+
+	margin: 136px auto 0;
+}
