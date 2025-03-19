@@ -1,13 +1,9 @@
-import { ElementType } from 'react'
 import Link from 'next/link'
-import classNames from 'classnames'
 
 import styles from './button.module.scss'
 import { ButtonProps } from './button.types'
 
-const defaultElement = 'button'
-
-export default function Button<E extends ElementType = typeof defaultElement>({
+export default function Button({
   children,
   tagName,
   href,
