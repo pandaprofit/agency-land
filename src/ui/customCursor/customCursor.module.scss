@@ -1,5 +1,42 @@
 @use "@styles/func";
 @use "@styles/mixins";
 @use "@styles/variables";
-  
-.root {}
+
+.root {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: #8B645A;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.01s ease, height 0.01s ease;
+  will-change: transform;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #8B645A;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    transition: all 0.2s ease;
+  }
+
+  &.isHovering {
+    width: 16px;
+    height: 16px;
+    background: white;
+
+    &::after {
+      width: 32px;
+      height: 32px;
+      opacity: 0.8;
+			background: white;
+    }
+  }
+}

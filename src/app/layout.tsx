@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { Footer } from '@modules/footer'
 import { Header } from '@modules/header'
+import { CustomCursor } from '@ui/customCursor'
 
 import '@styles/global.scss'
 import './globals.css'
@@ -75,6 +76,7 @@ export default function RootLayout({
     <html lang="ru" data-theme="retro">
       <body className={`${dm_sans.variable} ${unbounded.variable} ${roboto.variable} ${montserrat.variable} min-h-screen flex flex-col`}>
         <Provider>
+          <CustomCursor />
           <div id="root" className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow">

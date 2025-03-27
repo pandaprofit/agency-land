@@ -34,7 +34,7 @@ const VidjetsItem: FC<VidjetsItemProps> = ({
   )
 
   return (
-    <div className={rootClassName}>
+    <div className={rootClassName + ' CursorHover'}>
       {children}
     </div>
   )
