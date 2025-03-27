@@ -7,29 +7,28 @@
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
   height: 100%;
-  padding: 1rem;
   background-color: var(--base-200);
   border-radius: 1rem;
 }
 
 // Отступы между элементами
-.gap1 { gap: 1rem; }
-.gap2 { gap: 2rem; }
-.gap3 { gap: 3rem; }
-.gap4 { gap: 4rem; }
+.gap1 { gap: 8px; }
+.gap2 { gap: 12px; }
+.gap3 { gap: 16px; }
+.gap4 { gap: 20px; }
 
 // Медиа-запросы для планшетов
 @media (min-width: 640px) {
-  .sm-gap1 { gap: 1rem; }
-  .sm-gap2 { gap: 2rem; }
-  .sm-gap3 { gap: 3rem; }
-  .sm-gap4 { gap: 4rem; }
+  .sm-gap1 { gap: 8px; }
+  .sm-gap2 { gap: 12px; }
+  .sm-gap3 { gap: 16px; }
+  .sm-gap4 { gap: 20px; }
 }
 
 // Медиа-запросы для десктопа
 @media (min-width: 1024px) {
-  .lg-gap1 { gap: 1rem; }
-  .lg-gap2 { gap: 2rem; }
-  .lg-gap3 { gap: 3rem; }
-  .lg-gap4 { gap: 4rem; }
+  .lg-gap1 { gap: 8px; }
+  .lg-gap2 { gap: 12px; }
+  .lg-gap3 { gap: 16px; }
+  .lg-gap4 { gap: 20px; }
 }

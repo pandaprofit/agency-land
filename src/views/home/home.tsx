@@ -23,9 +23,11 @@ const Home: FC<HomeProps> = ({ className }) => {
           {/* <About /> */}
           <DaisyUltraTrash />
           <DaisyGrid />
-          <Vidjets>
-            {/* Здесь будут элементы сетки */}
-          </Vidjets>
+          <Vidjets gap={{
+            mobile: 1,
+            tablet: 2,
+            desktop: 4
+          }} />
         </div>
       </div>
     </main>
