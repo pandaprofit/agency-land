@@ -1,4 +1,6 @@
 export { Button } from './button'
+export { CustomCursor } from './customCursor'
+export { Grid } from './grid'
 export { Heading } from './heading'
 export { Input } from './input'
 export { Logo } from './logo'

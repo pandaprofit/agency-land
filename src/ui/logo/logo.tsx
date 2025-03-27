@@ -7,13 +7,17 @@ import styles from './logo.module.scss'
 import { LogoProps } from './logo.types'
 
 const Logo: FC<LogoProps> = ({
-  className
+  className,
+  mini
 }) => {
   const rootClassName = classNames(styles.root, className)
+  const logoClassName = classNames(styles.logo, {
+    [styles.mini]: mini
+  })
 
   return (
     <Link href="/" className={rootClassName}>
-      <Shark className={styles.logo} />
+      <Shark className={logoClassName} />
     </Link>
   )
 }

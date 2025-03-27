@@ -3,50 +3,14 @@
 @use "@styles/variables";
 
 .root {
+  max-width: 1312px;
+  margin: 20px auto;
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 0 20px;
 }
 
 .wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 1.5rem 2rem;
-  background: #F0F0E5;
-  border: 2px solid #A47764;
-  border-radius: 1rem;
-
-  a {
-    color: #8B645A;
-    font-family: var(--font-unbounded);
-    font-weight: 500;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: #C39E88;
-    }
-  }
-}
-
-.social {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-
-  a {
-    display: flex;
-    align-items: center;
-
-    svg {
-      width: 24px;
-      height: 24px;
-      fill: #8B645A;
-      transition: fill 0.3s ease;
-
-      &:hover {
-        fill: #C39E88;
-      }
-    }
-  }
 }

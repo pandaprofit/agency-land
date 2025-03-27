@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,6 +11,19 @@ const Portfolio: FC<PortfolioProps> = ({
   className
 }) => {
   const rootClassName = classNames(styles.root, className)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+      const scrollProgress = scrolled / maxScroll
+
+      document.documentElement.style.setProperty('--scroll', scrollProgress.toString())
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <Link href="/portfolio" className={styles.portfolioSection}>

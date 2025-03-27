@@ -27,11 +27,25 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	opacity: 1;
-	color: white;
+	color: #8B645A;
+}
+
+@keyframes slideUp {
+  from {
+    bottom: -300px;
+  }
+  to {
+    bottom: 0;
+  }
 }
 
 .portfolioImageContainer {
 	position: absolute;
-	bottom: 0;
+	bottom: -300px;
 	right: 0;
+	animation: slideUp 1s ease-out forwards;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -1s);
+	animation-iteration-count: 1;
+	animation-fill-mode: both;
 }
