@@ -1,6 +1,6 @@
 export interface VidjetsProps {
   className?: string
-  children: React.ReactNode
+  children?: React.ReactNode
   gap?: {
     mobile?: number
     tablet?: number

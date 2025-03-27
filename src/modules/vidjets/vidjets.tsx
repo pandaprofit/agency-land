@@ -1,6 +1,6 @@
 'use client'
 
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import classNames from 'classnames'
 
 import styles from './vidjets.module.scss'
@@ -19,12 +19,14 @@ const Vidjets: FC<VidjetsProps> = ({
     desktop: 3
   }
 }) => {
+  const [activeToggle, setActiveToggle] = useState<'cheap' | 'fast' | 'quality' | null>(null)
+
   const rootClassName = classNames(
     styles.root,
     className,
-    `gap-${gap.mobile}`,
-    `sm:gap-${gap.tablet}`,
-    `lg:gap-${gap.desktop}`
+    styles[`gap${gap.mobile}`],
+    styles[`sm-gap${gap.tablet}`],
+    styles[`lg-gap${gap.desktop}`]
   )
 
   return (
@@ -69,7 +71,7 @@ const Vidjets: FC<VidjetsProps> = ({
           desktop: 2
         }}
       >
-        Место для вашей рекламы
+        Место для вашей рекламы 3
       </VidjetsItem>
       <VidjetsItem
         width={{
@@ -83,7 +85,21 @@ const Vidjets: FC<VidjetsProps> = ({
           desktop: 1
         }}
       >
-        Место для вашей рекламы
+        Место для вашей рекламы 2
+      </VidjetsItem>
+      <VidjetsItem
+        width={{
+          mobile: 1,
+          tablet: 1,
+          desktop: 2
+        }}
+        height={{
+          mobile: 1,
+          tablet: 1,
+          desktop: 2
+        }}
+      >
+        Место для вашей рекламы 1
       </VidjetsItem>
       <VidjetsItem
         width={{
@@ -97,21 +113,10 @@ const Vidjets: FC<VidjetsProps> = ({
           desktop: 1
         }}
       >
-        Место для вашей рекламы
-      </VidjetsItem>
-      <VidjetsItem
-        width={{
-          mobile: 1,
-          tablet: 1,
-          desktop: 2
-        }}
-        height={{
-          mobile: 1,
-          tablet: 1,
-          desktop: 2
-        }}
-      >
-        <ChoiseToggles />
+        <ChoiseToggles
+          activeToggle={activeToggle}
+          setActiveToggle={setActiveToggle}
+        />
       </VidjetsItem>
     </div>
   )

@@ -23,7 +23,9 @@ const Home: FC<HomeProps> = ({ className }) => {
           {/* <About /> */}
           <DaisyUltraTrash />
           <DaisyGrid />
-          <Vidjets />
+          <Vidjets>
+            {/* Здесь будут элементы сетки */}
+          </Vidjets>
         </div>
       </div>
     </main>

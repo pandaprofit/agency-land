@@ -24,13 +24,13 @@ const VidjetsItem: FC<VidjetsItemProps> = ({
     styles.root,
     className,
     // Ширина в колонках
-    `col-span-${width.mobile}`,
-    `sm:col-span-${width.tablet}`,
-    `lg:col-span-${width.desktop}`,
+    styles[`col${width.mobile}`],
+    styles[`sm-col${width.tablet}`],
+    styles[`lg-col${width.desktop}`],
     // Высота в строках
-    `row-span-${height.mobile}`,
-    `sm:row-span-${height.tablet}`,
-    `lg:row-span-${height.desktop}`
+    styles[`row${height.mobile}`],
+    styles[`sm-row${height.tablet}`],
+    styles[`lg-row${height.desktop}`]
   )
 
   return (
