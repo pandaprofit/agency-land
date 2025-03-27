@@ -248,7 +248,8 @@ const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
         {/* Третий элемент - занимает 1 колонку и 2 строки */}
         <div className="row-span-2 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
           <div className="h-full flex items-center justify-center">
-            <span className="text-base-content opacity-50 hover:opacity-100 transition-opacity text-lg lg:text-xl">Виджет 3 (1×2)</span>
+            <span className="text-base-content opacity-50 hover:opacity-100 transition-opacity text-lg lg:text-xl">
+            </span>
           </div>
         </div>
 
