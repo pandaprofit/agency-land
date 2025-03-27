@@ -12,7 +12,7 @@ export const Game: FC = () => {
         {[...Array(50)].map((_, i) => (
           <div key={i} className={styles.snowflake} style={{
             '--delay': `${Math.random() * 5}s`,
-            '--duration': `${Math.random() * 3 + 2}s`,
+            '--duration': `${Math.random() * 20 + 2}s`,
             '--position': `${Math.random() * 100}%`,
             '--size': `${Math.random() * 6 + 4}px`,
           } as React.CSSProperties} />

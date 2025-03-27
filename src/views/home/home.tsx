@@ -9,6 +9,7 @@ import { HomeProps } from './home.types'
 import DaisyGrid from '@/components/daisyGrid/daisyGrid'
 import Introduce from '@/components/introduce/introduce'
 import { DaisyUltraTrash } from '@/components/daisyUltraTrash'
+import Vidjets from '@/modules/vidjets/vidjets'
 
 const Home: FC<HomeProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
@@ -22,6 +23,7 @@ const Home: FC<HomeProps> = ({ className }) => {
           {/* <About /> */}
           <DaisyUltraTrash />
           <DaisyGrid />
+          <Vidjets />
         </div>
       </div>
     </main>

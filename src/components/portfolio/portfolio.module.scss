@@ -1,0 +1,37 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	position: relative;
+}
+
+.portfolioSection {
+  background-color: #8B645A;
+
+	border-radius: 20px;
+
+
+	padding: 70px 1rem 1rem;
+
+}
+
+.portfolioContent {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.portfolioTitle {
+	font-size: 50px;
+	font-weight: 600;
+	text-transform: uppercase;
+	opacity: 1;
+	color: white;
+}
+
+.portfolioImageContainer {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}

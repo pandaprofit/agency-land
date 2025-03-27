@@ -1,0 +1,14 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	position: relative;
+	transition: all 0.3s ease-in-out;
+
+	&:hover {
+		transform: translateY(-10px);
+		scale: 1.02;
+		transition: all 0.3s ease-in-out;
+	}
+}

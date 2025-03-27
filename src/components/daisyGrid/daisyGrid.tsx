@@ -8,6 +8,7 @@ import styles from './daisyGrid.module.scss'
 import { DaisyGridProps } from './daisyGrid.types'
 import { ChoiseToggles } from '@/components/choiseToggles'
 import { Game } from '@/components/game'
+import Portfolio from '@/components/portfolio/portfolio'
 import './daisyGrid.css'
 import Link from 'next/link';
 import case1 from '@public/images/MainPage/por2folio.png'
@@ -117,8 +118,8 @@ const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
   // xl: 4 колонки (большие экраны)
   const rootClassName = classNames(
     'grid gap-4',
-    'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
-    'grid-rows-[repeat(4,minmax(300px,auto))] lg:grid-rows-[repeat(4,minmax(20vh,auto))]', // 20vh на десктопе
+    'grid-cols-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+    'grid-rows-[repeat(4,minmax(300px,auto))] lg:grid-rows-[repeat(4,minmax(20vh,auto))]',
     className
   )
 
@@ -219,37 +220,20 @@ const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
   return (
     <div className="relative">
       <div className={rootClassName}>
-        {/* Первый элемент - занимает 2 колонки и 2 строки */}
-        <div className="col-span-1 row-span-2 rounded-box sm:col-span-2 xl:col-span-2 card bg-base-100 shadow-xl min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+        {/* Первый элемент - занимает 4 колонки на мобильных и 3 на десктопе */}
+        <div className="col-span-4 row-span-2 rounded-box sm:col-span-2 lg:col-span-3 xl:col-span-2 card bg-base-100 shadow-xl min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
           <div className="h-full flex items-center justify-center overflow-hidden">
             <Game />
           </div>
         </div>
 
-        {/* Второй элемент - занимает 1 колонку и 2 строки */}
-
+        {/* Второй элемент - Portfolio */}
         <div className="row-span-2 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl portfolio-section">
-          <Link href="/portfolio">
-            <div className="h-full flex items-center justify-center portfolio-content">
-              <span className="text-base-content opacity-50 hover:opacity-100 transition-opacity text-lg lg:text-xl portfolio-title">Por2folio</span>
-              <div className='portfolio-image-container'>
-                <Image
-                  src={case1}
-                  alt="Por2folio"
-                  width={348}
-                  height={473}
-                  className='portfolio-image'
-                />
-              </div>
-            </div>
-          </Link>
+          <Portfolio />
         </div>
 
-        {/* Третий элемент - занимает 1 колонку и 2 строки */}
-        <div className="row-span-2 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-          <div className="h-full flex items-center justify-center">
-            <span className="text-base-content opacity-50 hover:opacity-100 transition-opacity text-lg lg:text-xl">
-            </span>
+        <div className="col-span-4 row-span-2 rounded-box sm:col-span-2 lg:col-span-2 xl:col-span-1 card bg-base-100 shadow-xl min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+          <div className="h-full flex items-center justify-center overflow-hidden">
           </div>
         </div>
 
