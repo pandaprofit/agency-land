@@ -15,7 +15,7 @@ const Portfolio: FC<PortfolioProps> = ({
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+      const maxScroll = document.documentElement.scrollHeight - (0.5 * window.innerHeight)
       const scrollProgress = scrolled / maxScroll
 
       document.documentElement.style.setProperty('--scroll', scrollProgress.toString())
