@@ -44,7 +44,7 @@ const CustomCursor: FC<CustomCursorProps> = ({
         currentPositionRef.current.x += dx * 0.1
         currentPositionRef.current.y += dy * 0.1
 
-        cursorRef.current.style.transform = `translate(${currentPositionRef.current.x - 60}px, ${currentPositionRef.current.y - 30}px)`
+        cursorRef.current.style.transform = `translate(${currentPositionRef.current.x - 50}px, ${currentPositionRef.current.y - 10}px)`
       }
 
       animationFrameRef.current = requestAnimationFrame(animate)
