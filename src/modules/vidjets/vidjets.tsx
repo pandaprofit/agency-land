@@ -12,7 +12,6 @@ import ChoiseToggles from '@/components/choiseToggles/choiseToggles'
 
 const Vidjets: FC<VidjetsProps> = ({
   className,
-  children,
   gap = {
     mobile: 1,
     tablet: 2,

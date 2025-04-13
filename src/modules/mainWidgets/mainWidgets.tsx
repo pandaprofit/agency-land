@@ -1,17 +1,19 @@
 'use client'
-
 import { FC, useCallback, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import Image from 'next/image'
-import { gsap } from "gsap";
-import styles from './daisyGrid.module.scss'
-import { DaisyGridProps } from './daisyGrid.types'
-import { ChoiseToggles } from '@/components/choiseToggles'
-import { Game } from '@/components/game'
-import Portfolio from '@/components/portfolio/portfolio'
-import './daisyGrid.css'
 
-const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
+import styles from './mainWidgets.module.scss'
+import { MainWidgetsProps } from './mainWidgets.types'
+import Image from 'next/image'
+import { ChoiseToggles, Game } from '@/components'
+import case1 from '@public/images/MainPage/por2folio.png'
+import Link from 'next/link'
+import gsap from 'gsap'
+
+const MainWidgets: FC<MainWidgetsProps> = ({
+  className
+}) => {
+  const rootClassName = classNames(styles.root, className)
   const [activeToggle, setActiveToggle] = useState<'cheap' | 'fast' | 'quality' | null>(null)
   const [visibleTooltip, setVisibleTooltip] = useState<'cheap' | 'fast' | 'quality' | null>(null)
   const tooltipRef = useRef<HTMLDivElement>(null)
@@ -109,18 +111,6 @@ const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
     }
   }, [activeToggle, visibleTooltip])
 
-  // Адаптивный грид:
-  // sm: 1 колонка (мобильные)
-  // md: 2 колонки (планшеты)
-  // lg: 3 колонки (небольшие десктопы)
-  // xl: 4 колонки (большие экраны)
-  const rootClassName = classNames(
-    'grid gap-4',
-    'grid-cols-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
-    'grid-rows-[repeat(4,minmax(300px,auto))] lg:grid-rows-[repeat(4,minmax(20vh,auto))]',
-    className
-  )
-
   useEffect(() => {
     if (visibleTooltip && tooltipRef.current && textRef.current && imageRef.current) {
       // Сначала скрываем элементы
@@ -216,52 +206,49 @@ const DaisyGrid: FC<DaisyGridProps> = ({ className }) => {
   }
 
   return (
-    <div className="relative">
-      <div className={rootClassName}>
-        {/* Первый элемент - занимает 4 колонки на мобильных и 3 на десктопе */}
-        <div className="col-span-4 row-span-2 rounded-box sm:col-span-2 lg:col-span-3 xl:col-span-2 card bg-base-100 shadow-xl min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-          <div className="h-full flex items-center justify-center overflow-hidden">
-            <Game />
-          </div>
+    <div className={rootClassName}>
+      <div className={styles.game}>
+        <div>
+          <Game />
         </div>
-
-        {/* Второй элемент - Portfolio */}
-        <div className="row-span-2 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl portfolio-section">
-          <Portfolio />
-        </div>
-
-        <div className="col-span-4 row-span-2 rounded-box sm:col-span-2 lg:col-span-2 xl:col-span-1 card bg-base-100 shadow-xl min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-          <div className="h-full flex items-center justify-center overflow-hidden">
+      </div>
+      <div className={styles.portfolioSection}>
+        <Link href="/portfolio">
+          <div className={styles.portfolioContent}>
+            <span className={styles.portfolioTitle}>Por2folio</span>
+            <div className={styles.portfolioImageContainer}>
+              <Image
+                src={case1}
+                alt="Por2folio"
+                width={348}
+                height={473}
+                className={styles.portfolioImage}
+              />
+            </div>
           </div>
+        </Link>
+      </div>
+      <div className={styles.choise}>
+        <div>
+          {renderTooltip()}
+          <ChoiseToggles
+            activeToggle={activeToggle}
+            setActiveToggle={setActiveToggle}
+          />
         </div>
+      </div>
+      <div className={styles.widgets}>
+        <div>
 
-        {/* Четвертый элемент - занимает 2 колонки и 1 строку */}
-        <div className="col-span-1 sm:col-span-2 xl:col-span-2 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[20vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl overflow-hidden">
-          <div className="h-full flex items-center justify-center">
-            <span className={styles.content}>Виджет 4 (2×1)</span>
-          </div>
         </div>
+      </div>
+      <div className={styles.widgets}>
+        <div>
 
-        {/* Пятый элемент - занимает 2 колонки и 1 строку, расположен под четвертым */}
-        <div className="col-span-1 sm:col-span-2 xl:col-span-2 row-start-4 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[20vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-          <div className="h-full flex items-center justify-center">
-            <span className={styles.content}>Виджет 5 (2×1)</span>
-          </div>
-        </div>
-
-        {/* Шестой элемент - ChoiseToggles */}
-        <div className="col-span-1 row-span-2 sm:col-span-2 xl:col-span-2 col-start-3 row-start-3 card bg-base-100 shadow-xl p-4 min-h-[300px] lg:min-h-[40vh] hover:scale-105 transition-all duration-300 hover:shadow-2xl">
-          <div className="h-full flex items-center justify-center relative overflow-hidden">
-            {renderTooltip()}
-            <ChoiseToggles
-              activeToggle={activeToggle}
-              setActiveToggle={setActiveToggle}
-            />
-          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default DaisyGrid
+export default MainWidgets

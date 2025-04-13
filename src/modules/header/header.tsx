@@ -1,14 +1,13 @@
 'use client'
 
-import { FC, useState, useEffect, useRef, useCallback } from 'react';
-import { Logo, Wrapper } from '@/ui';
+import { FC, useState, useEffect, useRef } from 'react';
+import { Logo } from '@/ui';
 import classNames from 'classnames';
 import gsap from 'gsap';
 
 import styles from './header.module.scss';
 import { HeaderProps } from './header.types';
 import { Navigation } from '@ui/navigation';
-import { useSetAtom } from 'jotai';
 
 const Header: FC<HeaderProps> = ({ className }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -107,37 +106,37 @@ const Header: FC<HeaderProps> = ({ className }) => {
 
   return (
     <header className={headerClassName}>
-        <div className={styles.wrapper__container}>
+      <div className={styles.wrapper__container}>
 
-          <div className={styles.logo}>
-            <Logo />
-          </div>
-
-          <div className={styles.desktop__navigation}>
-            <Navigation />
-          </div>
-
-
-				{isMobile && (
-					<div className={styles.buttons__wrapper}>
-						<div
-							className={styles.burgerbutton}
-							onClick={handleBurgerClick}
-							ref={burgerButtonRef}
-							data-open={isMenuOpen}
-						>
-							<div className={styles.burgericon} ref={burgerIconRef}>
-								<div className={styles.burgericon__before} ref={burgerBeforeRef}></div>
-								<div className={styles.burgericon__after} ref={burgerAfterRef}></div>
-							</div>
-						</div>
-					</div>
-				)}
+        <div className={styles.logo}>
+          <Logo />
         </div>
 
-        <div ref={menuRef} className={styles.mobilemenu}>
+        <div className={styles.desktop__navigation}>
           <Navigation />
         </div>
+
+
+        {isMobile && (
+          <div className={styles.buttons__wrapper}>
+            <div
+              className={styles.burgerbutton}
+              onClick={handleBurgerClick}
+              ref={burgerButtonRef}
+              data-open={isMenuOpen}
+            >
+              <div className={styles.burgericon} ref={burgerIconRef}>
+                <div className={styles.burgericon__before} ref={burgerBeforeRef}></div>
+                <div className={styles.burgericon__after} ref={burgerAfterRef}></div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div ref={menuRef} className={styles.mobilemenu}>
+        <Navigation />
+      </div>
     </header>
   );
 };
