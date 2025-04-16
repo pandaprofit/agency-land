@@ -58,65 +58,6 @@ const Vidjets: FC<VidjetsProps> = ({
       >
         <Portfolio />
       </VidjetsItem>
-      <VidjetsItem
-        width={{
-          mobile: 1,
-          tablet: 1,
-          desktop: 1
-        }}
-        height={{
-          mobile: 1,
-          tablet: 1,
-          desktop: 2
-        }}
-      >
-        Место для вашей рекламы 3
-      </VidjetsItem>
-      <VidjetsItem
-        width={{
-          mobile: 1,
-          tablet: 1,
-          desktop: 2
-        }}
-        height={{
-          mobile: 1,
-          tablet: 1,
-          desktop: 1
-        }}
-      >
-        Место для вашей рекламы 2
-      </VidjetsItem>
-      <VidjetsItem
-        width={{
-          mobile: 1,
-          tablet: 1,
-          desktop: 2
-        }}
-        height={{
-          mobile: 1,
-          tablet: 1,
-          desktop: 2
-        }}
-      >
-        Место для вашей рекламы 1
-      </VidjetsItem>
-      <VidjetsItem
-        width={{
-          mobile: 1,
-          tablet: 1,
-          desktop: 2
-        }}
-        height={{
-          mobile: 1,
-          tablet: 1,
-          desktop: 1
-        }}
-      >
-        <ChoiseToggles
-          activeToggle={activeToggle}
-          setActiveToggle={setActiveToggle}
-        />
-      </VidjetsItem>
     </div>
   )
 }
