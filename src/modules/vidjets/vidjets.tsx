@@ -8,7 +8,7 @@ import { VidjetsProps } from './vidjets.types'
 import VidjetsItem from '@/components/vidjetsItem/vidjetsItem'
 import Game from '@/components/game/game'
 import Portfolio from '@/components/portfolio/portfolio'
-import ChoiseToggles from '@/components/choiseToggles/choiseToggles'
+// import ChoiseToggles from '@/components/choiseToggles/choiseToggles'
 
 const Vidjets: FC<VidjetsProps> = ({
   className,
@@ -18,7 +18,7 @@ const Vidjets: FC<VidjetsProps> = ({
     desktop: 3
   }
 }) => {
-  const [activeToggle, setActiveToggle] = useState<'cheap' | 'fast' | 'quality' | null>(null)
+  // const [activeToggle, setActiveToggle] = useState<'cheap' | 'fast' | 'quality' | null>(null)
 
   const rootClassName = classNames(
     styles.root,
