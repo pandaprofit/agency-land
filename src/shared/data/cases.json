@@ -1,6 +1,6 @@
 [
 	{
-		"imagePreview": "/images/portfolio/mst_preview.png",
+		"imagePreview": "/agency-land/images/portfolio/mst_preview.png",
 		"title": "MST",
 		"stack": [
 			"React",
@@ -13,7 +13,7 @@
 		"link": "https://duha-malo.vercel.app/"
 	},
 	{
-		"imagePreview": "/images/portfolio/1bw1.png",
+		"imagePreview": "/agency-land/images/portfolio/1bw1.png",
 		"title": "Best Wave",
 		"stack": [
 			"Tilda",
@@ -24,7 +24,7 @@
 		"link": "https://1bw1.ru/"
 	},
 	{
-		"imagePreview": "/images/portfolio/vesdb.png",
+		"imagePreview": "/agency-land/images/portfolio/vesdb.png",
 		"title": "VES",
 		"stack": [
 			"Webflow",
@@ -34,7 +34,7 @@
 		"link": "https://vesdb.io/"
 	},
 	{
-		"imagePreview": "/images/portfolio/gloid.png",
+		"imagePreview": "/agency-land/images/portfolio/gloid.png",
 		"title": "GloID",
 		"stack": [
 			"Webflow"
@@ -43,7 +43,7 @@
 		"link": "https://gloid.io/"
 	},
 	{
-		"imagePreview": "/images/portfolio/media-trust.png",
+		"imagePreview": "/agency-land/images/portfolio/media-trust.png",
 		"title": "Media-Trust",
 		"stack": [
 			"WordPress",
@@ -53,7 +53,7 @@
 		"link": "https://infodevelopmentpreview.ru/"
 	},
 	{
-		"imagePreview": "/images/portfolio/printer.png",
+		"imagePreview": "/agency-land/images/portfolio/printer.png",
 		"title": "Printer",
 		"stack": [
 			"React",
@@ -65,7 +65,7 @@
 		"link": "https://printer-ten.vercel.app/"
 	},
 	{
-		"imagePreview": "/images/portfolio/sai.png",
+		"imagePreview": "/agency-land/images/portfolio/sai.png",
 		"title": "SAI",
 		"stack": [
 			"Webflow"
@@ -74,7 +74,7 @@
 		"link": "https://sai-one.vercel.app/"
 	},
 	{
-		"imagePreview": "/images/portfolio/kim.png",
+		"imagePreview": "/agency-land/images/portfolio/kim.png",
 		"title": "K.KIM",
 		"stack": [
 			"React",
@@ -87,7 +87,7 @@
 		"link": "https://kimmy-five.vercel.app/"
 	},
 	{
-		"imagePreview": "/images/portfolio/moonton.png",
+		"imagePreview": "/agency-land/images/portfolio/moonton.png",
 		"title": "Moon TON",
 		"stack": [
 			"Webflow"
@@ -96,7 +96,7 @@
 		"link": "https://moontoon-wheat.vercel.app/"
 	},
 	{
-		"imagePreview": "/images/portfolio/arktech.png",
+		"imagePreview": "/agency-land/images/portfolio/arktech.png",
 		"title": "ArkTechnik",
 		"stack": [
 			"WordPress",
@@ -106,7 +106,7 @@
 		"link": "https://ark-technik.ru/"
 	},
 	{
-		"imagePreview": "/images/portfolio/bush.png",
+		"imagePreview": "/agency-land/images/portfolio/bush.png",
 		"title": "Bush",
 		"stack": [
 			"WordPress",
@@ -116,7 +116,7 @@
 		"link": "https://bush63.ru/"
 	},
 	{
-		"imagePreview": "/images/portfolio/septik.png",
+		"imagePreview": "/agency-land/images/portfolio/septik.png",
 		"title": "AIS-Septik ",
 		"stack": [
 			"WordPress",
@@ -126,7 +126,7 @@
 		"link": "https://septik-group.ru/"
 	},
 	{
-		"imagePreview": "/images/portfolio/ais-septik.png",
+		"imagePreview": "/agency-land/images/portfolio/ais-septik.png",
 		"title": "AIS-Septik SEO",
 		"stack": [
 			"WordPress",
@@ -137,7 +137,7 @@
 		"link": "https://ais-septic.ru/"
 	},
 	{
-		"imagePreview": "/images/portfolio/kim-audit.png",
+		"imagePreview": "/agency-land/images/portfolio/kim-audit.png",
 		"title": "K.KIM Audit",
 		"stack": [
 			"Tilda",
@@ -149,7 +149,7 @@
 		"link": "https://audit.kim.agency/"
 	},
 	{
-		"imagePreview": "/images/portfolio/kim-quiz.png",
+		"imagePreview": "/agency-land/images/portfolio/kim-quiz.png",
 		"title": "K.KIM Quiz",
 		"stack": [
 			"Tilda",
