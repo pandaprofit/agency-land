@@ -6,10 +6,10 @@ import styles from './home.module.scss'
 import { HomeProps } from './home.types'
 // import { Intro } from '@/modules/intro'
 // import { About } from '@/modules/about'
-import DaisyGrid from '@/components/daisyGrid/daisyGrid'
-import Introduce from '@/components/introduce/introduce'
-import { DaisyUltraTrash } from '@/components/daisyUltraTrash'
+// import { DaisyGrid } from '@/components/daisyGrid/daisyGrid'
+// import { DaisyUltraTrash } from '@/components/daisyUltraTrash'
 import Vidjets from '@/modules/vidjets/vidjets'
+import Introduce from '@/components/introduce/introduce'
 
 const Home: FC<HomeProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)

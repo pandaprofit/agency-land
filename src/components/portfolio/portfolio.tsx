@@ -26,7 +26,7 @@ const Portfolio: FC<PortfolioProps> = ({
   }, [])
 
   return (
-    <Link href="/portfolio" className={styles.portfolioSection}>
+    <Link href="/portfolio" className={rootClassName}>
       <div className={styles.portfolioContent}>
         <p className={styles.portfolioTitle}>Por2folio</p>
         <div className={styles.portfolioImageContainer}>
