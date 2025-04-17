@@ -26,4 +26,10 @@
 
     transition: color 0.3s ease, background-color 0.3s ease;
   }
+
+  // Стили для активного состояния (когда isActive === true)
+  &.active {
+    background-color: #8B645A;
+    color: white;
+  }
 }
