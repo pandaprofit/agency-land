@@ -1,5 +1,6 @@
 'use client'
-import { FC, useState } from 'react'
+import { FC, Suspense, useMemo } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import classNames from 'classnames'
 
 import styles from './cases.module.scss'
@@ -7,50 +8,41 @@ import { CasesProps } from './cases.types'
 import { CaseItem, CasesFilter } from '@/components'
 import casesData from '@/shared/data/cases.json'
 
-const Cases: FC<CasesProps> = ({
-  className
-}) => {
+// Хелпер для фильтрации
+const filterCases = (stack: string) => {
+  return casesData.filter((item) => {
+    switch (stack) {
+      case 'All': return true
+      case 'React': return item.stack.includes('React')
+      case 'Webflow': return item.stack.includes('Webflow')
+      case 'Tilda': return item.stack.includes('Tilda')
+      case 'Wordpress': return item.stack.includes('WordPress')
+      default: return true
+    }
+  })
+}
+
+// Обертка для использования useSearchParams в клиентском компоненте
+function CasesContent({ className }: CasesProps) {
   const rootClassName = classNames(styles.root, className)
-  const [, setSelectedStack] = useState<string>('all')
-  const [visibleCases, setVisibleCases] = useState(casesData)
-  const [isAnimating, setIsAnimating] = useState(false)
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const currentStack = searchParams.get('stack') || 'All'
+
+  // Вычисляем видимые кейсы напрямую
+  const visibleCases = useMemo(() => filterCases(currentStack), [currentStack]);
 
   const handleStackChange = (stack: string) => {
-    // Начинаем анимацию
-    setIsAnimating(true)
-
-    // Ждем завершения анимации исчезновения
-    setTimeout(() => {
-      // Фильтруем кейсы
-      const newFilteredCases = casesData.filter((item) => {
-        switch (stack) {
-          case 'All':
-            return true
-          case 'React':
-            return item.stack.includes('React')
-          case 'Webflow':
-            return item.stack.includes('Webflow')
-          case 'Tilda':
-            return item.stack.includes('Tilda')
-          case 'Wordpress':
-            return item.stack.includes('WordPress')
-          default:
-            return true
-        }
-      })
-
-      // Обновляем стейт
-      setSelectedStack(stack)
-      setVisibleCases(newFilteredCases)
-
-      // Завершаем анимацию
-      setIsAnimating(false)
-    }, 600) // Время должно совпадать с длительностью CSS анимации
+    const currentStackFromUrl = searchParams.get('stack') || 'All'
+    if (stack !== currentStackFromUrl) {
+      router.push(`?stack=${stack}`, { scroll: false })
+    }
   }
 
   return (
     <div className={rootClassName}>
       <CasesFilter
+        currentStack={currentStack}
         setStack={handleStackChange}
       />
       <div className={styles.cases}>
@@ -58,9 +50,7 @@ const Cases: FC<CasesProps> = ({
           visibleCases.map((item) => (
             <div
               key={item.title}
-              className={classNames({
-                [styles.animating]: isAnimating
-              })}
+              className={styles.caseItemContainer}
             >
               <CaseItem
                 imagePreview={item.imagePreview}
@@ -74,6 +64,15 @@ const Cases: FC<CasesProps> = ({
         }
       </div>
     </div>
+  )
+}
+
+// Основной компонент, использующий Suspense
+const Cases: FC<CasesProps> = (props) => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CasesContent {...props} />
+    </Suspense>
   )
 }
 

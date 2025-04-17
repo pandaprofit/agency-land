@@ -7,7 +7,8 @@ import { Button } from '@/ui'
 
 const CasesFilter: FC<CasesFilterProps> = ({
   className,
-  setStack
+  setStack,
+  currentStack = 'All'
 }) => {
   const rootClassName = classNames(styles.root, className)
 
@@ -17,19 +18,39 @@ const CasesFilter: FC<CasesFilterProps> = ({
 
   return (
     <div className={rootClassName}>
-      <Button tagName='button' onClick={() => onHandleClick('All')}>
+      <Button
+        tagName='button'
+        onClick={() => onHandleClick('All')}
+        isActive={currentStack === 'All'}
+      >
         All
       </Button>
-      <Button tagName='button' onClick={() => onHandleClick('React')}>
+      <Button
+        tagName='button'
+        onClick={() => onHandleClick('React')}
+        isActive={currentStack === 'React'}
+      >
         React
       </Button>
-      <Button tagName='button' onClick={() => onHandleClick('Webflow')}>
+      <Button
+        tagName='button'
+        onClick={() => onHandleClick('Webflow')}
+        isActive={currentStack === 'Webflow'}
+      >
         Webflow
       </Button>
-      <Button tagName='button' onClick={() => onHandleClick('Tilda')}>
+      <Button
+        tagName='button'
+        onClick={() => onHandleClick('Tilda')}
+        isActive={currentStack === 'Tilda'}
+      >
         Tilda
       </Button>
-      <Button tagName='button' onClick={() => onHandleClick('Wordpress')}>
+      <Button
+        tagName='button'
+        onClick={() => onHandleClick('Wordpress')}
+        isActive={currentStack === 'Wordpress'}
+      >
         WordPress
       </Button>
     </div>
