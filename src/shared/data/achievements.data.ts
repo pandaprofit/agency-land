@@ -13,7 +13,7 @@ export const ACHIEVEMENTS_LIST: Record<string, AchievementDetails> = {
 		title: 'Любопытный Варвар',
 		description: 'Вы посетили страницу \'О нас\'. Мы ценим ваш интерес!',
 		icon: '/icons/achievements/eye.svg', // Пример пути
-		condition: 'Посетить страницу \"О нас\"'
+		condition: 'Посетить страницу "О нас"'
 	},
 	clicked_monkey: {
 		id: 'clicked_monkey',
