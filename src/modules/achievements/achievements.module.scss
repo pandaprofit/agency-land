@@ -64,10 +64,20 @@
   }
 }
 
+// Новый контейнер для анимации высоты
+.listContainer {
+  // overflow: hidden; // GSAP будет управлять этим свойством во время анимации
+  // height: auto; // GSAP будет управлять этим свойством
+}
+
+// Сам список
 .list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: func.rem(16);
+  // Убедимся, что нет лишних отступов, влияющих на высоту контейнера
+  padding: 0;
+  margin: 0;
 }
 
 .placeholder {
