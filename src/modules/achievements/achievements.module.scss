@@ -1,5 +1,34 @@
 @use "@styles/func";
-@use "@styles/mixins";
-@use "@styles/variables";
-  
-.root {}
+@use "@styles/mixins" as *;
+@use "@styles/variables" as *;
+
+.root {
+  padding: func.rem(20);
+  background-color: #f9f9f9; // Легкий фон для модуля
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.title {
+  font-size: func.rem(20);
+  font-weight: 600;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: func.rem(16);
+  padding-bottom: func.rem(8);
+  border-bottom: 1px solid #eee;
+}
+
+.list {
+  display: grid;
+  // Адаптивная сетка: минимум 180px ширины, максимум 1fr
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: func.rem(12);
+}
+
+.placeholder {
+  color: #777;
+  font-style: italic;
+  text-align: center;
+  padding: func.rem(20) 0;
+}
