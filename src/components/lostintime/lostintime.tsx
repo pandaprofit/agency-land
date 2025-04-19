@@ -26,7 +26,8 @@ const Lostintime: FC<LostintimeProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const API_URL = '/api/lostintime/entries';
+  // const API_URL = '/api/lostintime/entries'; // Путь для прокси (не работает на GH Pages)
+  const API_URL = 'https://artem-lost-in-time.vercel.app/api/entries'; // Прямой URL API
 
   // Функция загрузки и обработки данных
   const fetchEntries = useCallback(async () => {
