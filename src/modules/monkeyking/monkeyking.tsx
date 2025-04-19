@@ -5,7 +5,8 @@ import classNames from 'classnames'
 import { gsap } from 'gsap'
 import Image from 'next/image'
 import monkey from '@public/images/monkey.png'
-import { useAchievements } from '@/hooks/useAchievements' // Импортируем хук
+// import { useAchievements } from '@/hooks/useAchievements' // Убираем старый импорт
+import { useAchievementsContext } from '@/context/AchievementsContext' // Используем контекст
 import styles from './monkeyking.module.scss'
 import { MonkeykingProps } from './monkeyking.types'
 
@@ -19,7 +20,7 @@ const Monkeyking: FC<MonkeykingProps> = ({
     { [styles.visible]: isVisible }
   )
   const monkeyRef = useRef<HTMLDivElement>(null)
-  const { unlockAchievement } = useAchievements() // Получаем функцию разблокировки
+  const { unlockAchievement } = useAchievementsContext() // Получаем из контекста
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -41,7 +42,8 @@ const Monkeyking: FC<MonkeykingProps> = ({
 
   const handleClick = () => {
     console.log('Monkey clicked! Implement module display here.');
-    unlockAchievement('clicked_monkey') // Разблокируем достижение по ID
+    unlockAchievement('clicked_monkey')
+    unlockAchievement('test_achievement_1') // Оставляем для теста
     // TODO: Добавить логику отображения другого модуля
   }
 

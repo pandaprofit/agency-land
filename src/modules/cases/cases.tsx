@@ -3,7 +3,8 @@ import { FC, Suspense, useMemo } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import classNames from 'classnames'
 
-import { useAchievements } from '@/hooks/useAchievements'
+// import { useAchievements } from '@/hooks/useAchievements' // Убираем старый импорт
+import { useAchievementsContext } from '@/context/AchievementsContext' // Используем контекст
 import styles from './cases.module.scss'
 import { CasesProps } from './cases.types'
 import { CaseItem, CasesFilter } from '@/components'
@@ -29,7 +30,7 @@ function CasesContent({ className }: CasesProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const currentStack = searchParams.get('stack') || 'All'
-  const { unlockAchievement } = useAchievements()
+  const { unlockAchievement } = useAchievementsContext() // Получаем из контекста
 
   // Вычисляем видимые кейсы напрямую
   const visibleCases = useMemo(() => filterCases(currentStack), [currentStack]);

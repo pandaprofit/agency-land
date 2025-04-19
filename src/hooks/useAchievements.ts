@@ -6,6 +6,11 @@ import { AchievementDetails, ACHIEVEMENTS_LIST } from '@/shared/data/achievement
 // Ключ для localStorage
 const userAchievementsKey = 'userAchievements'
 
+// Интерфейс для уведомления (добавляем уникальный ID)
+interface AchievementNotification extends AchievementDetails {
+	notificationId: string;
+}
+
 // Функция для безопасного чтения из localStorage
 const getStoredAchievements = (): string[] => {
 	// Проверяем, доступен ли localStorage (на случай SSR или окружений без window)
@@ -42,71 +47,83 @@ const setStoredAchievements = (ids: string[]) => {
 export const useAchievements = () => {
 	// Состояние для ID разблокированных достижений
 	const [unlockedIds, setUnlockedIds] = useState<string[]>(() => getStoredAchievements())
-	// Состояние для хранения данных ачивки, которую нужно показать в уведомлении
-	const [notificationAchievement, setNotificationAchievement] = useState<AchievementDetails | null>(null)
-	const notificationTimeoutRef = useRef<NodeJS.Timeout | null>(null) // Ref для таймаута уведомления
+	// Храним массив активных уведомлений
+	const [activeNotifications, setActiveNotifications] = useState<AchievementNotification[]>([])
+	// Используем Ref для хранения таймаутов по ID уведомления
+	const notificationTimeoutsRef = useRef<Record<string, NodeJS.Timeout>>({});
 
-	// Очистка таймаута при размонтировании
+	// Очистка всех таймаутов при размонтировании
 	useEffect(() => {
+		const timeouts = notificationTimeoutsRef.current;
 		return () => {
-			if (notificationTimeoutRef.current) {
-				clearTimeout(notificationTimeoutRef.current);
-			}
+			Object.values(timeouts).forEach(clearTimeout);
 		};
+	}, []);
+
+	// Функция для удаления уведомления по ID
+	const removeNotification = useCallback((notificationId: string) => {
+		setActiveNotifications(prev => prev.filter(n => n.notificationId !== notificationId));
+		// Удаляем и очищаем таймаут из Ref
+		if (notificationTimeoutsRef.current[notificationId]) {
+			clearTimeout(notificationTimeoutsRef.current[notificationId]);
+			delete notificationTimeoutsRef.current[notificationId];
+		}
 	}, []);
 
 	// Функция для разблокировки нового достижения
 	const unlockAchievement = useCallback((id: string) => {
-		// Проверяем, не разблокировано ли уже
+		// --- Логика сохранения и показа уведомления (только если ачивка новая) ---
 		if (!unlockedIds.includes(id)) {
 			const achievementDetails = ACHIEVEMENTS_LIST[id]
 			if (!achievementDetails) {
 				console.warn(`Achievement with id "${id}" not found in ACHIEVEMENTS_LIST.`)
-				return; // Не разблокируем, если нет описания
+				return;
 			}
 
+			// 1. Обновляем состояние и localStorage
 			const newUnlockedIds = [...unlockedIds, id]
-			setUnlockedIds(newUnlockedIds) // Обновляем состояние
-			setStoredAchievements(newUnlockedIds) // Обновляем localStorage
-			console.log(`Achievement unlocked: ${id}`); // Для дебага
+			setUnlockedIds(newUnlockedIds)
+			setStoredAchievements(newUnlockedIds)
+			console.log(`Achievement unlocked and saved: ${id}`);
 
-			// Показываем уведомление
-			setNotificationAchievement(achievementDetails);
-			console.log('Notification state set:', achievementDetails);
+			// 2. Показываем уведомление (только для новой ачивки)
+			const notificationId = `${id}_${Date.now()}`
+			const newNotification: AchievementNotification = {
+				...achievementDetails,
+				notificationId
+			};
+			console.log(`Adding notification: ${notificationId}`);
+			setActiveNotifications(prev => [newNotification, ...prev]);
 
-			// Очищаем предыдущий таймаут, если есть
-			if (notificationTimeoutRef.current) {
-				clearTimeout(notificationTimeoutRef.current);
-			}
-
-			// Ставим таймаут на скрытие уведомления (например, через 5 секунд)
-			notificationTimeoutRef.current = setTimeout(() => {
-				setNotificationAchievement(null);
-				notificationTimeoutRef.current = null;
+			// 3. Устанавливаем таймаут для этого уведомления
+			const timeoutId = setTimeout(() => {
+				console.log(`Auto-removing notification: ${notificationId}`);
+				removeNotification(notificationId);
 			}, 5000);
+
+			// Сохраняем таймаут
+			notificationTimeoutsRef.current[notificationId] = timeoutId;
+
+		} else {
+			// Если ачивка уже была, ничего не делаем (или просто логируем)
+			console.log(`Achievement "${id}" is already unlocked. Notification not shown.`);
 		}
-	}, [unlockedIds]) // Зависит от unlockedIds
+	}, [unlockedIds, removeNotification])
 
 	// Функция для проверки, разблокировано ли достижение
 	const isUnlocked = useCallback((id: string): boolean => {
 		return unlockedIds.includes(id)
 	}, [unlockedIds]) // Зависит от unlockedIds
 
-	// Функция для ручного скрытия уведомления (если понадобится кнопка)
-	const clearNotification = useCallback(() => {
-		setNotificationAchievement(null);
-		if (notificationTimeoutRef.current) {
-			clearTimeout(notificationTimeoutRef.current);
-			notificationTimeoutRef.current = null;
-		}
-	}, [])
+	// clearNotification теперь синоним removeNotification для внешнего использования
+	const clearNotification = removeNotification;
 
 	// Возвращаем состояние и функции
 	return {
 		unlockedIds,
 		unlockAchievement,
 		isUnlocked,
-		notificationAchievement, // Возвращаем данные для уведомления
-		clearNotification,     // Возвращаем функцию для скрытия
+		activeNotifications, // Возвращаем массив уведомлений
+		clearNotification,  // Функция для удаления конкретного уведомления
 	}
 }

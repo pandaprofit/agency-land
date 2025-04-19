@@ -28,26 +28,29 @@
   position: fixed;
   bottom: func.rem(20);
   right: func.rem(20);
-  z-index: 1050; // Выше, чем другие элементы UI, но ниже модалок
+  z-index: 1050;
 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: func.rem(10);
+}
+
+.notificationItem {
   display: flex;
   align-items: center;
   gap: func.rem(12);
 
+  width: fit-content;
   min-width: 250px;
   max-width: 350px;
   padding: func.rem(12) func.rem(16);
   border-radius: 8px;
-  background-color: #333; // Темный фон для уведомления
+  background-color: #333;
   color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-  // Анимация появления
-  // Запускаем анимацию, когда элемент появляется в DOM
   animation: slideInUp 0.5s ease forwards;
-
-  // TODO: Добавить анимацию исчезновения при скрытии
-  // (потребует AnimatePresence или подобной библиотеки для отслеживания удаления из DOM)
 }
 
 .iconWrapper {
@@ -56,7 +59,7 @@
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #555; // Фон для иконки в темной теме
+  background-color: #555;
   display: flex;
   align-items: center;
   justify-content: center;

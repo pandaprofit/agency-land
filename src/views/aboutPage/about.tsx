@@ -3,7 +3,8 @@
 import { FC, useState, useEffect } from 'react'
 import classNames from 'classnames'
 
-import { useAchievements } from '@/hooks/useAchievements'
+// import { useAchievements } from '@/hooks/useAchievements' // Убираем старый импорт
+import { useAchievementsContext } from '@/context/AchievementsContext' // Используем контекст
 import styles from './about.module.scss'
 import { AboutProps } from './about.types'
 import { Achievements } from '@/modules/achievements'
@@ -15,7 +16,7 @@ const AboutPage: FC<AboutProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<ActiveTab>('us')
   const rootClassName = classNames(styles.root, className)
-  const { unlockAchievement } = useAchievements()
+  const { unlockAchievement } = useAchievementsContext() // Получаем из контекста
 
   useEffect(() => {
     unlockAchievement('visited_about');

@@ -1,45 +1,86 @@
 'use client' // Необходимо для localStorage и useState
 
-import { FC } from 'react' // Убрали useState, useEffect
+import { FC, useState, useMemo } from 'react' // Добавили useState, useMemo
 import classNames from 'classnames'
 
 import { Achievement } from '@/components' // Импортируем компонент
 import { ACHIEVEMENTS_LIST } from '@/shared/data/achievements.data' // Импортируем список всех достижений
-import { useAchievements } from '@/hooks/useAchievements' // Импортируем наш хук
+import { useAchievementsContext } from '@/context/AchievementsContext' // Используем контекст
 import styles from './achievements.module.scss'
 import { AchievementsProps } from './achievements.types'
+
+type AchievementFilter = 'all' | 'unlocked' | 'locked';
 
 const Achievements: FC<AchievementsProps> = ({
   className
 }) => {
   const rootClassName = classNames(styles.root, className)
-  // Получаем функцию проверки статуса из хука
-  const { isUnlocked } = useAchievements()
+  const { isUnlocked } = useAchievementsContext()
+  const [activeFilter, setActiveFilter] = useState<AchievementFilter>('all')
 
-  // Получаем список всех ID достижений из нашего словаря
   const allAchievementIds = Object.keys(ACHIEVEMENTS_LIST);
+
+  // Фильтруем и сортируем ID достижений
+  const filteredAndSortedIds = useMemo(() => {
+    return allAchievementIds
+      .filter(id => {
+        if (activeFilter === 'unlocked') return isUnlocked(id);
+        if (activeFilter === 'locked') return !isUnlocked(id);
+        return true; // 'all'
+      })
+      .sort((a, b) => {
+        const unlockedA = isUnlocked(a);
+        const unlockedB = isUnlocked(b);
+        // Сначала разблокированные (-1), потом заблокированные (1)
+        return (unlockedB ? 1 : 0) - (unlockedA ? 1 : 0);
+      });
+  }, [allAchievementIds, activeFilter, isUnlocked]); // Пересчитываем при смене фильтра или статуса
 
   return (
     <div className={rootClassName}>
-      <h3 className={styles.title}>Достижения</h3>
-      {allAchievementIds.length > 0 ? (
+      <div className={styles.header}>
+        <h3 className={styles.title}>Достижения</h3>
+        {/* Кнопки фильтрации */}
+        <div className={styles.filters}>
+          <button
+            onClick={() => setActiveFilter('all')}
+            className={classNames(styles.filterButton, { [styles.active]: activeFilter === 'all' })}
+          >
+            Все
+          </button>
+          <button
+            onClick={() => setActiveFilter('unlocked')}
+            className={classNames(styles.filterButton, { [styles.active]: activeFilter === 'unlocked' })}
+          >
+            Полученные
+          </button>
+          <button
+            onClick={() => setActiveFilter('locked')}
+            className={classNames(styles.filterButton, { [styles.active]: activeFilter === 'locked' })}
+          >
+            Не полученные
+          </button>
+        </div>
+      </div>
+
+      {filteredAndSortedIds.length > 0 ? (
         <div className={styles.list}>
-          {/* Итерируемся по всем возможным ачивкам */}
-          {allAchievementIds.map(id => {
+          {/* Мапим отфильтрованный и отсортированный массив */}
+          {filteredAndSortedIds.map(id => {
             const achievementDetails = ACHIEVEMENTS_LIST[id]
-            const unlocked = isUnlocked(id); // Проверяем статус
+            const unlocked = isUnlocked(id);
 
             return (
               <Achievement
                 key={id}
-                {...achievementDetails} // Передаем все детали (включая condition)
-                isUnlocked={unlocked} // Передаем актуальный статус
+                {...achievementDetails}
+                isUnlocked={unlocked}
               />
             );
           })}
         </div>
       ) : (
-        <p className={styles.placeholder}>Список достижений пуст.</p>
+        <p className={styles.placeholder}>Нет достижений, соответствующих фильтру.</p>
       )}
     </div>
   )

@@ -36,5 +36,20 @@ export const ACHIEVEMENTS_LIST: Record<string, AchievementDetails> = {
 		description: 'Это достижение пока не получено.',
 		icon: '/icons/achievements/lock.svg',
 		condition: 'Выполнить секретное действие'
-	}
+	},
+	// --- Новые тестовые ачивки ---
+	test_achievement_1: {
+		id: 'test_achievement_1',
+		title: 'Первопроходец Тестов',
+		description: 'Это первая тестовая ачивка.',
+		// icon: '/icons/achievements/test.svg',
+		condition: 'Просто существует для теста'
+	},
+	test_achievement_2: {
+		id: 'test_achievement_2',
+		title: 'Вторая Попытка',
+		description: 'Еще одно тестовое достижение, чтобы список был длиннее.',
+		icon: '/icons/achievements/star.svg',
+		condition: 'Проверить отображение с иконкой'
+	},
 };

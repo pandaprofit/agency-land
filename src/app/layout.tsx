@@ -2,14 +2,14 @@ import { ReactNode } from 'react'
 import { Footer } from '@modules/footer'
 import { Header } from '@modules/header'
 import { CustomCursor } from '@ui/customCursor'
+import { AchievementsViewer } from '@/components/achievementsViewer'
+import { Provider as JotaiProvider } from '@service/provider'
+import { AchievementsProvider } from '@/context/AchievementsContext'
 
 import '@styles/global.scss'
 import './globals.css'
 
 import localFont from 'next/font/local'
-import { Provider } from '@service/provider'
-
-import { AchievementsViewer } from '@/components/achievementsViewer'
 
 const dm_sans = localFont({
   src: [
@@ -65,8 +65,6 @@ const montserrat = localFont({
   variable: '--font-montserrat'
 })
 
-
-
 export default function RootLayout({
   children
 }: Readonly<{
@@ -75,19 +73,21 @@ export default function RootLayout({
   return (
     <html lang="ru" data-theme="retro">
       <body className={`${dm_sans.variable} ${unbounded.variable} ${roboto.variable} ${montserrat.variable} min-h-screen flex flex-col`}>
-        <Provider>
+        <JotaiProvider>
+          <AchievementsProvider>
             <CustomCursor />
             <AchievementsViewer />
-          <div id="root" className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-          </div>
+            <div id="root" className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </div>
 
-          <div id="modal-root" />
-        </Provider>
+            <div id="modal-root" />
+          </AchievementsProvider>
+        </JotaiProvider>
       </body>
     </html>
   )
