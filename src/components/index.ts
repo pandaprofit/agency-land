@@ -1,5 +1,6 @@
 export { AboutContent } from './aboutContent'
 export { Achievement } from './achievement'
+export { AchievementsViewer } from './achievementsViewer'
 export { CaseItem } from './caseItem'
 export { CasesFilter } from './casesFilter'
 export { ChoiseToggles } from './choiseToggles'
