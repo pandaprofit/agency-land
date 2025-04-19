@@ -1,0 +1,36 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+  position: fixed;
+  bottom: 0px; // Отступ снизу
+  right: 5%;  // Позиция справа
+  z-index: 1000; // Убедимся, что виджет поверх других элементов
+  cursor: pointer;
+
+  // Начальное состояние (скрыто и смещено только вниз)
+  opacity: 1;
+  transform: translateY(100%); // Смещаем только вниз
+
+  // GSAP анимирует transform (y)
+  // CSS будет управлять opacity через класс .visible
+
+  // Стили, когда виджет стал видимым (после анимации GSAP)
+  &.visible {
+    opacity: 1;
+    transition: opacity 0.3s ease; // Плавное появление opacity
+
+    // Hover эффект применяем только к видимому элементу
+    &:hover {
+      opacity: 0.8;
+      // transition для hover уже есть в &.visible
+    }
+  }
+}
+
+// Удаляем старый hover вне .visible
+// &:hover {
+//   opacity: 0.8;
+//   transition: opacity 0.3s ease;
+// }
