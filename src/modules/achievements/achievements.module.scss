@@ -20,10 +20,8 @@
 }
 
 .list {
-  display: grid;
-  // Адаптивная сетка: минимум 180px ширины, максимум 1fr
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: func.rem(12);
+  display: flex;
+  flex-direction: column;
 }
 
 .placeholder {

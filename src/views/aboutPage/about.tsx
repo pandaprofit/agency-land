@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import { useAchievements } from '@/hooks/useAchievements'
 import styles from './about.module.scss'
 import { AboutProps } from './about.types'
+import { Achievements } from '@/modules/achievements'
 
 type ActiveTab = 'us' | 'you'
 
@@ -51,7 +52,7 @@ const AboutPage: FC<AboutProps> = ({
         <section className={classNames(styles.column, styles.aboutYou, { [styles.visible]: activeTab === 'you' })}>
           <h2 className={styles.heading}>About You</h2>
           {/* TODO: Добавьте сюда контент "About You" */}
-          <p>Здесь будет текст о вас...</p>
+          <Achievements />
         </section>
       </div>
     </main>

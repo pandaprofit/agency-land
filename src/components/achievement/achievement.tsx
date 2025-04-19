@@ -8,9 +8,10 @@ import { AchievementProps } from './achievement.types'
 const Achievement: FC<AchievementProps> = ({
   className,
   id,
-  title,
+  title = '???',
   description,
   icon,
+  condition,
   isUnlocked
 }) => {
   const rootClassName = classNames(
@@ -25,14 +26,17 @@ const Achievement: FC<AchievementProps> = ({
   }
 
   return (
-    <div className={rootClassName} title={description}>
+    <div className={rootClassName} title={isUnlocked ? description : condition}>
       {icon && (
         <div className={styles.iconWrapper}>
-          <Image src={icon} alt={title} width={40} height={40} />
+          <Image src={icon} alt={title || 'Achievement icon'} width={40} height={40} />
         </div>
       )}
       <div className={styles.content}>
         <h4 className={styles.title}>{title}</h4>
+        {condition && (
+          <p className={styles.condition}>{condition}</p>
+        )}
       </div>
     </div>
   )

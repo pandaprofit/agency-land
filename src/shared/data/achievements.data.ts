@@ -3,6 +3,7 @@ export interface AchievementDetails {
 	title: string; // Название достижения
 	description: string; // Описание
 	icon?: string; // Путь к иконке (опционально)
+	condition: string; // Условие выполнения
 }
 
 // Словарь всех возможных достижений
@@ -11,19 +12,29 @@ export const ACHIEVEMENTS_LIST: Record<string, AchievementDetails> = {
 		id: 'visited_about',
 		title: 'Любопытный Варвар',
 		description: 'Вы посетили страницу \'О нас\'. Мы ценим ваш интерес!',
-		icon: '/icons/achievements/eye.svg' // Пример пути
+		icon: '/icons/achievements/eye.svg', // Пример пути
+		condition: 'Посетить страницу \"О нас\"'
 	},
 	clicked_monkey: {
 		id: 'clicked_monkey',
 		title: 'Король Обезьян?',
 		description: 'Вы кликнули на нашего особого гостя!',
-		icon: '/icons/achievements/monkey.svg' // Пример пути
+		icon: '/icons/achievements/monkey.svg', // Пример пути
+		condition: 'Кликнуть на обезьянку в правом нижнем углу'
 	},
 	filtered_cases_react: {
 		id: 'filtered_cases_react',
 		title: 'Реактивный Фильтр',
 		description: 'Вы отфильтровали кейсы по стеку React.',
-		icon: '/icons/achievements/react.svg' // Пример пути
+		icon: '/icons/achievements/react.svg', // Пример пути
+		condition: 'Отфильтровать портфолио по стеку React'
 	},
 	// Добавьте сюда другие достижения...
+	placeholder_locked: { // Пример явно заблокированного для теста
+		id: 'placeholder_locked',
+		title: 'Скрытое Сокровище',
+		description: 'Это достижение пока не получено.',
+		icon: '/icons/achievements/lock.svg',
+		condition: 'Выполнить секретное действие'
+	}
 };

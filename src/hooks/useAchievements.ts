@@ -1,6 +1,7 @@
 'use client' // Хук будет использоваться в клиентских компонентах
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
+import { AchievementDetails, ACHIEVEMENTS_LIST } from '@/shared/data/achievements.data' // Импортируем детали
 
 // Ключ для localStorage
 const userAchievementsKey = 'userAchievements'
@@ -41,24 +42,48 @@ const setStoredAchievements = (ids: string[]) => {
 export const useAchievements = () => {
 	// Состояние для ID разблокированных достижений
 	const [unlockedIds, setUnlockedIds] = useState<string[]>(() => getStoredAchievements())
+	// Состояние для хранения данных ачивки, которую нужно показать в уведомлении
+	const [notificationAchievement, setNotificationAchievement] = useState<AchievementDetails | null>(null)
+	const notificationTimeoutRef = useRef<NodeJS.Timeout | null>(null) // Ref для таймаута уведомления
 
-	// Загрузка данных при монтировании (на случай, если начальное состояние не успело прочитать)
-	// Хотя useState с функцией должен это делать, добавим для надежности.
-	// В современных версиях React useState с функцией должен срабатывать надежно.
-	// Можно этот useEffect убрать, если нет проблем с инициализацией.
-	// useEffect(() => {
-	//   setUnlockedIds(getStoredAchievements());
-	// }, []);
+	// Очистка таймаута при размонтировании
+	useEffect(() => {
+		return () => {
+			if (notificationTimeoutRef.current) {
+				clearTimeout(notificationTimeoutRef.current);
+			}
+		};
+	}, []);
 
 	// Функция для разблокировки нового достижения
 	const unlockAchievement = useCallback((id: string) => {
 		// Проверяем, не разблокировано ли уже
 		if (!unlockedIds.includes(id)) {
+			const achievementDetails = ACHIEVEMENTS_LIST[id]
+			if (!achievementDetails) {
+				console.warn(`Achievement with id "${id}" not found in ACHIEVEMENTS_LIST.`)
+				return; // Не разблокируем, если нет описания
+			}
+
 			const newUnlockedIds = [...unlockedIds, id]
 			setUnlockedIds(newUnlockedIds) // Обновляем состояние
 			setStoredAchievements(newUnlockedIds) // Обновляем localStorage
 			console.log(`Achievement unlocked: ${id}`); // Для дебага
-			// TODO: Показать уведомление пользователю?
+
+			// Показываем уведомление
+			setNotificationAchievement(achievementDetails);
+			console.log('Notification state set:', achievementDetails);
+
+			// Очищаем предыдущий таймаут, если есть
+			if (notificationTimeoutRef.current) {
+				clearTimeout(notificationTimeoutRef.current);
+			}
+
+			// Ставим таймаут на скрытие уведомления (например, через 5 секунд)
+			notificationTimeoutRef.current = setTimeout(() => {
+				setNotificationAchievement(null);
+				notificationTimeoutRef.current = null;
+			}, 5000);
 		}
 	}, [unlockedIds]) // Зависит от unlockedIds
 
@@ -67,10 +92,21 @@ export const useAchievements = () => {
 		return unlockedIds.includes(id)
 	}, [unlockedIds]) // Зависит от unlockedIds
 
+	// Функция для ручного скрытия уведомления (если понадобится кнопка)
+	const clearNotification = useCallback(() => {
+		setNotificationAchievement(null);
+		if (notificationTimeoutRef.current) {
+			clearTimeout(notificationTimeoutRef.current);
+			notificationTimeoutRef.current = null;
+		}
+	}, [])
+
 	// Возвращаем состояние и функции
 	return {
 		unlockedIds,
 		unlockAchievement,
 		isUnlocked,
+		notificationAchievement, // Возвращаем данные для уведомления
+		clearNotification,     // Возвращаем функцию для скрытия
 	}
 }

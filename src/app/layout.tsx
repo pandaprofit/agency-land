@@ -9,7 +9,7 @@ import './globals.css'
 import localFont from 'next/font/local'
 import { Provider } from '@service/provider'
 
-
+import { AchievementsViewer } from '@/components/achievementsViewer'
 
 const dm_sans = localFont({
   src: [
@@ -76,7 +76,8 @@ export default function RootLayout({
     <html lang="ru" data-theme="retro">
       <body className={`${dm_sans.variable} ${unbounded.variable} ${roboto.variable} ${montserrat.variable} min-h-screen flex flex-col`}>
         <Provider>
-          <CustomCursor />
+            <CustomCursor />
+            <AchievementsViewer />
           <div id="root" className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow">

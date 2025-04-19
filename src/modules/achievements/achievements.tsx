@@ -13,30 +13,34 @@ const Achievements: FC<AchievementsProps> = ({
   className
 }) => {
   const rootClassName = classNames(styles.root, className)
-  // Получаем данные и функции из хука
-  const { unlockedIds } = useAchievements()
+  // Получаем функцию проверки статуса из хука
+  const { isUnlocked } = useAchievements()
+
+  // Получаем список всех ID достижений из нашего словаря
+  const allAchievementIds = Object.keys(ACHIEVEMENTS_LIST);
 
   return (
     <div className={rootClassName}>
-      <h3 className={styles.title}>Ваши достижения</h3>
-      {unlockedIds.length > 0 ? (
+      <h3 className={styles.title}>Достижения</h3>
+      {allAchievementIds.length > 0 ? (
         <div className={styles.list}>
-          {unlockedIds.map(id => {
+          {/* Итерируемся по всем возможным ачивкам */}
+          {allAchievementIds.map(id => {
             const achievementDetails = ACHIEVEMENTS_LIST[id]
-            // Отображаем только если нашли детали достижения по ID
-            return achievementDetails ? (
+            const unlocked = isUnlocked(id); // Проверяем статус
+
+            return (
               <Achievement
                 key={id}
-                {...achievementDetails} // Передаем все детали
-                isUnlocked={true} // Всегда true, так как берем из unlockedIds
+                {...achievementDetails} // Передаем все детали (включая condition)
+                isUnlocked={unlocked} // Передаем актуальный статус
               />
-            ) : null;
+            );
           })}
         </div>
       ) : (
-        <p className={styles.placeholder}>У вас пока нет достижений.</p>
+        <p className={styles.placeholder}>Список достижений пуст.</p>
       )}
-      {/* В будущем можно добавить переключатель для показа всех достижений (включая заблокированные) */}
     </div>
   )
 }
