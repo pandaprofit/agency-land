@@ -1,8 +1,9 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import classNames from 'classnames'
 
+import { useAchievements } from '@/hooks/useAchievements'
 import styles from './about.module.scss'
 import { AboutProps } from './about.types'
 
@@ -13,6 +14,11 @@ const AboutPage: FC<AboutProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<ActiveTab>('us')
   const rootClassName = classNames(styles.root, className)
+  const { unlockAchievement } = useAchievements()
+
+  useEffect(() => {
+    unlockAchievement('visited_about');
+  }, [unlockAchievement]);
 
   return (
     <main className={rootClassName}>

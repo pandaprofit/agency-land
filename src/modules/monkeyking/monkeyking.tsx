@@ -1,8 +1,11 @@
+'use client' // Компонент использует хуки и события
+
 import { FC, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { gsap } from 'gsap'
 import Image from 'next/image'
 import monkey from '@public/images/monkey.png'
+import { useAchievements } from '@/hooks/useAchievements' // Импортируем хук
 import styles from './monkeyking.module.scss'
 import { MonkeykingProps } from './monkeyking.types'
 
@@ -16,6 +19,7 @@ const Monkeyking: FC<MonkeykingProps> = ({
     { [styles.visible]: isVisible }
   )
   const monkeyRef = useRef<HTMLDivElement>(null)
+  const { unlockAchievement } = useAchievements() // Получаем функцию разблокировки
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,6 +41,7 @@ const Monkeyking: FC<MonkeykingProps> = ({
 
   const handleClick = () => {
     console.log('Monkey clicked! Implement module display here.');
+    unlockAchievement('clicked_monkey') // Разблокируем достижение по ID
     // TODO: Добавить логику отображения другого модуля
   }
 
