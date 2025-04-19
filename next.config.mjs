@@ -26,7 +26,17 @@ const nextConfig = {
   },
   images: {
     unoptimized: false,
-  }
+  },
+
+  // Добавляем прокси для API
+  async rewrites() {
+    return [
+      {
+        source: '/api/lostintime/:path*', // Путь, который будет перехватываться
+        destination: 'https://artem-lost-in-time.vercel.app/api/:path*', // Куда перенаправлять
+      },
+    ];
+  },
 };
 
 export default nextConfig;

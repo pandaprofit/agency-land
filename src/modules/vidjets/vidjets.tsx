@@ -8,6 +8,7 @@ import { VidjetsProps } from './vidjets.types'
 import VidjetsItem from '@/components/vidjetsItem/vidjetsItem'
 import Game from '@/components/game/game'
 import Portfolio from '@/components/portfolio/portfolio'
+import Lostintime from '@/components/lostintime/lostintime'
 // import ChoiseToggles from '@/components/choiseToggles/choiseToggles'
 
 const Vidjets: FC<VidjetsProps> = ({
@@ -57,6 +58,20 @@ const Vidjets: FC<VidjetsProps> = ({
         }}
       >
         <Portfolio />
+      </VidjetsItem>
+      <VidjetsItem
+        width={{
+          mobile: 1,
+          tablet: 1,
+          desktop: 4
+        }}
+        height={{
+          mobile: 1,
+          tablet: 1,
+          desktop: 2
+        }}
+      >
+        <Lostintime />
       </VidjetsItem>
     </div>
   )
