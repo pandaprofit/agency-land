@@ -1,43 +1,20 @@
 'use client' // Необходимо для localStorage и useState
 
-import { FC, useState, useEffect } from 'react'
+import { FC } from 'react' // Убрали useState, useEffect
 import classNames from 'classnames'
 
 import { Achievement } from '@/components' // Импортируем компонент
 import { ACHIEVEMENTS_LIST } from '@/shared/data/achievements.data' // Импортируем список всех достижений
+import { useAchievements } from '@/hooks/useAchievements' // Импортируем наш хук
 import styles from './achievements.module.scss'
 import { AchievementsProps } from './achievements.types'
-
-// Ключ для localStorage
-const userAchievementsKey = 'userAchievements'
 
 const Achievements: FC<AchievementsProps> = ({
   className
 }) => {
   const rootClassName = classNames(styles.root, className)
-  // Состояние для хранения ID разблокированных достижений
-  const [unlockedIds, setUnlockedIds] = useState<string[]>([])
-
-  // Эффект для чтения данных из localStorage при монтировании
-  useEffect(() => {
-    try {
-      const storedData = localStorage.getItem(userAchievementsKey)
-      if (storedData) {
-        const parsedIds = JSON.parse(storedData)
-        // Проверяем, что это массив строк
-        if (Array.isArray(parsedIds) && parsedIds.every(item => typeof item === 'string')) {
-          setUnlockedIds(parsedIds)
-        } else {
-          console.warn('Invalid data found in localStorage for achievements.')
-          localStorage.removeItem(userAchievementsKey); // Очищаем некорректные данные
-        }
-      }
-    } catch (error) {
-      console.error('Failed to read achievements from localStorage:', error)
-      // Если ошибка парсинга JSON, очищаем некорректные данные
-      localStorage.removeItem(userAchievementsKey);
-    }
-  }, []) // Пустой массив зависимостей - запускается один раз при монтировании
+  // Получаем данные и функции из хука
+  const { unlockedIds } = useAchievements()
 
   return (
     <div className={rootClassName}>
@@ -51,7 +28,7 @@ const Achievements: FC<AchievementsProps> = ({
               <Achievement
                 key={id}
                 {...achievementDetails} // Передаем все детали
-                isUnlocked={true}
+                isUnlocked={true} // Всегда true, так как берем из unlockedIds
               />
             ) : null;
           })}
