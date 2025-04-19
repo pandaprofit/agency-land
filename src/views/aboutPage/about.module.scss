@@ -1,5 +1,84 @@
 @use "@styles/func";
-@use "@styles/mixins";
-@use "@styles/variables";
-  
-.root {}
+@use "@styles/mixins" as *;
+// @use "@styles/variables" as *; // Убираем, так как не используем переменные оттуда
+
+.root {
+  padding: func.rem(32) func.rem(16); // Используем func.rem и отступы как в header
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: var(--font-unbounded); // Используем шрифт из header
+}
+
+.tabButtons {
+  display: flex;
+  gap: func.rem(16); // Используем func.rem
+  margin-bottom: func.rem(24); // Используем func.rem
+  border-bottom: 1px solid #d1d5db; // Светло-серый разделитель
+
+  @include desktop { // Используем миксин напрямую
+    display: none;
+  }
+}
+
+.tabButton {
+  padding: func.rem(12) func.rem(16); // Используем func.rem
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: func.rem(16); // Используем func.rem
+  font-weight: 600;
+  color: #666; // Оставляем для неактивного состояния
+  border-bottom: 3px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    color: #333; // Оставляем для hover неактивного
+  }
+
+  &.active {
+    color: #A47764; // Основной акцентный цвет из header
+    border-bottom-color: #A47764; // Основной акцентный цвет из header
+  }
+}
+
+.contentArea {
+  @include desktop {
+    display: flex;
+    gap: func.rem(32); // Используем func.rem
+  }
+}
+
+.column {
+  display: none;
+	background-color: #f7f7f7d5;
+	border-radius: 8px;
+	padding: func.rem(32);
+
+  @include desktop {
+    display: block;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &.visible {
+    display: block;
+  }
+}
+
+.heading {
+  font-size: func.rem(32); // Используем func.rem
+  font-weight: 700;
+  margin-bottom: func.rem(24); // Используем func.rem
+  color: #A47764; // Основной акцентный цвет из header
+}
+
+.aboutUs {
+  @include desktop {
+    // border-right: 1px solid #d1d5db; // Можно использовать такой же разделитель
+    // padding-right: func.rem(32);
+  }
+}
+
+.aboutYou {
+  // padding-left: func.rem(32);
+}

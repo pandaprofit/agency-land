@@ -1,4 +1,5 @@
 export { AboutContent } from './aboutContent'
+export { Achievement } from './achievement'
 export { CaseItem } from './caseItem'
 export { CasesFilter } from './casesFilter'
 export { ChoiseToggles } from './choiseToggles'
