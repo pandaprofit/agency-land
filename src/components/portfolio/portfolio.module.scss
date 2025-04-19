@@ -4,20 +4,26 @@
 
 .root {
 	position: relative;
+	display: flex;
+	height: 100%;
+	width: 100%;
 }
 
 .portfolioSection {
+	width: 100%;
   background-color: #8B645A;
 
 	border-radius: 20px;
 
 
-	padding: 70px 1rem 1rem;
+	padding: 70px 0 1rem;
 
 }
 
 .portfolioContent {
+	width: 100%;
 	display: flex;
+	position: relative;
 	justify-content: center;
 	align-items: flex-start;
 }
@@ -25,6 +31,7 @@
 .portfolioTitle {
 	font-size: 50px;
 	font-weight: 600;
+	line-height: 1.2;
 	text-transform: uppercase;
 	opacity: 1;
 	color: #8B645A;
@@ -41,7 +48,7 @@
 
 .portfolioImageContainer {
 	position: absolute;
-	bottom: -300px;
+	bottom: 0;
 	right: 0;
 	animation: slideUp 1s ease-out forwards;
 	animation-play-state: paused;
