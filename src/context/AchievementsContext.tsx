@@ -3,10 +3,12 @@
 import React, { createContext, useContext, ReactNode } from 'react';
 import { useAchievements } from '@/hooks/useAchievements';
 import { AchievementDetails } from '@/shared/data/achievements.data';
+import { NotificationStatus } from '@/hooks/useAchievements'; // Импортируем тип статуса
 
-// Интерфейс для уведомления (копируем или импортируем из хука)
+// Обновляем интерфейс уведомления
 interface AchievementNotification extends AchievementDetails {
 	notificationId: string;
+	status: NotificationStatus;
 }
 
 // Обновляем тип контекста
@@ -14,8 +16,9 @@ interface AchievementsContextType {
 	unlockedIds: string[];
 	unlockAchievement: (id: string) => void;
 	isUnlocked: (id: string) => boolean;
-	activeNotifications: AchievementNotification[]; // Массив уведомлений
-	clearNotification: (notificationId: string) => void; // Принимает ID
+	activeNotifications: AchievementNotification[];
+	clearNotification: (notificationId: string) => void; // Для немедленного удаления (ручное закрытие)
+	removeNotification: (notificationId: string) => void; // Для удаления после анимации
 }
 
 // Создаем контекст

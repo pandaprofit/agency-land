@@ -65,9 +65,9 @@
 }
 
 .list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Можно сделать минимальную ширину чуть больше
-  gap: func.rem(16);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .placeholder {

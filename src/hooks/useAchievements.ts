@@ -6,9 +6,13 @@ import { AchievementDetails, ACHIEVEMENTS_LIST } from '@/shared/data/achievement
 // Ключ для localStorage
 const userAchievementsKey = 'userAchievements'
 
+// Добавляем статус уведомления
+export type NotificationStatus = 'visible' | 'fading';
+
 // Интерфейс для уведомления (добавляем уникальный ID)
 interface AchievementNotification extends AchievementDetails {
 	notificationId: string;
+	status: NotificationStatus;
 }
 
 // Функция для безопасного чтения из localStorage
@@ -49,25 +53,36 @@ export const useAchievements = () => {
 	const [unlockedIds, setUnlockedIds] = useState<string[]>(() => getStoredAchievements())
 	// Храним массив активных уведомлений
 	const [activeNotifications, setActiveNotifications] = useState<AchievementNotification[]>([])
-	// Используем Ref для хранения таймаутов по ID уведомления
-	const notificationTimeoutsRef = useRef<Record<string, NodeJS.Timeout>>({});
+	// Храним таймауты начала fade-out
+	const fadeOutTimeoutsRef = useRef<Record<string, NodeJS.Timeout>>({});
 
 	// Очистка всех таймаутов при размонтировании
 	useEffect(() => {
-		const timeouts = notificationTimeoutsRef.current;
+		const timeouts = fadeOutTimeoutsRef.current;
 		return () => {
 			Object.values(timeouts).forEach(clearTimeout);
 		};
 	}, []);
 
-	// Функция для удаления уведомления по ID
+	// Функция для удаления уведомления из состояния (вызывается после fade-out)
 	const removeNotification = useCallback((notificationId: string) => {
 		setActiveNotifications(prev => prev.filter(n => n.notificationId !== notificationId));
-		// Удаляем и очищаем таймаут из Ref
-		if (notificationTimeoutsRef.current[notificationId]) {
-			clearTimeout(notificationTimeoutsRef.current[notificationId]);
-			delete notificationTimeoutsRef.current[notificationId];
+		// Очищаем таймаут начала fade-out, если он еще не сработал (например, при ручном закрытии)
+		if (fadeOutTimeoutsRef.current[notificationId]) {
+			clearTimeout(fadeOutTimeoutsRef.current[notificationId]);
+			delete fadeOutTimeoutsRef.current[notificationId];
 		}
+		// console.log(`Notification removed from state: ${notificationId}`);
+	}, []);
+
+	// Функция для начала fade-out (устанавливает статус)
+	const startFading = useCallback((notificationId: string) => {
+		setActiveNotifications(prev =>
+			prev.map(n => n.notificationId === notificationId ? { ...n, status: 'fading' } : n)
+		);
+		// Удаляем таймаут начала fade-out, так как он сработал
+		delete fadeOutTimeoutsRef.current[notificationId];
+		// console.log(`Notification status changed to fading: ${notificationId}`);
 	}, []);
 
 	// Функция для разблокировки нового достижения
@@ -86,36 +101,34 @@ export const useAchievements = () => {
 			setStoredAchievements(newUnlockedIds)
 			console.log(`Achievement unlocked and saved: ${id}`);
 
-			// 2. Показываем уведомление (только для новой ачивки)
+			// 2. Добавляем уведомление в состояние
 			const notificationId = `${id}_${Date.now()}`
 			const newNotification: AchievementNotification = {
 				...achievementDetails,
-				notificationId
+				notificationId,
+				status: 'visible' // Начальный статус
 			};
 			console.log(`Adding notification: ${notificationId}`);
 			setActiveNotifications(prev => [newNotification, ...prev]);
 
-			// 3. Устанавливаем таймаут для этого уведомления
-			const timeoutId = setTimeout(() => {
-				console.log(`Auto-removing notification: ${notificationId}`);
-				removeNotification(notificationId);
-			}, 5000);
-
-			// Сохраняем таймаут
-			notificationTimeoutsRef.current[notificationId] = timeoutId;
+			// 3. Устанавливаем таймаут для НАЧАЛА fade-out через 5 секунд
+			fadeOutTimeoutsRef.current[notificationId] = setTimeout(() => {
+				console.log(`Starting fade out for: ${notificationId}`);
+				startFading(notificationId);
+			}, 5000); // 5 секунд видимости
 
 		} else {
 			// Если ачивка уже была, ничего не делаем (или просто логируем)
 			console.log(`Achievement "${id}" is already unlocked. Notification not shown.`);
 		}
-	}, [unlockedIds, removeNotification])
+	}, [unlockedIds, startFading])
 
 	// Функция для проверки, разблокировано ли достижение
 	const isUnlocked = useCallback((id: string): boolean => {
 		return unlockedIds.includes(id)
 	}, [unlockedIds]) // Зависит от unlockedIds
 
-	// clearNotification теперь синоним removeNotification для внешнего использования
+	// Функция ручного закрытия (сразу удаляет)
 	const clearNotification = removeNotification;
 
 	// Возвращаем состояние и функции
@@ -125,5 +138,6 @@ export const useAchievements = () => {
 		isUnlocked,
 		activeNotifications, // Возвращаем массив уведомлений
 		clearNotification,  // Функция для удаления конкретного уведомления
+		removeNotification, // Передаем для использования после анимации
 	}
 }

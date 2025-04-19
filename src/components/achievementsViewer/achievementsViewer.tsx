@@ -1,6 +1,6 @@
 'use client'
 
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 import classNames from 'classnames'
 import Image from 'next/image'
 
@@ -13,7 +13,15 @@ const AchievementsViewer: FC<AchievementsViewerProps> = ({
   className
 }) => {
   // Получаем массив активных уведомлений и функцию очистки
-  const { activeNotifications, clearNotification } = useAchievementsContext()
+  const { activeNotifications, clearNotification, removeNotification } = useAchievementsContext()
+
+  // Обработчик завершения CSS transition (для opacity)
+  const handleTransitionEnd = useCallback((notificationId: string) => {
+    // Убеждаемся, что transition завершился именно для opacity
+    // (event.propertyName === 'opacity' - можно добавить для надежности, но может быть хрупко)
+    console.log(`Transition ended for ${notificationId}, removing notification.`);
+    removeNotification(notificationId);
+  }, [removeNotification]);
 
   // Если массив пуст, ничего не рендерим
   if (activeNotifications.length === 0) {
@@ -29,7 +37,14 @@ const AchievementsViewer: FC<AchievementsViewerProps> = ({
       {activeNotifications.map((notification) => (
         // Обертка для каждого отдельного уведомления
         // Используем notificationId как ключ
-        <div key={notification.notificationId} className={styles.notificationItem}>
+        <div
+          key={notification.notificationId}
+          className={classNames(
+            styles.notificationItem,
+            { [styles.fading]: notification.status === 'fading' }
+          )}
+          onTransitionEnd={() => handleTransitionEnd(notification.notificationId)}
+        >
           {/* Иконка */}
           {notification.icon && (
             <div className={styles.iconWrapper}>
