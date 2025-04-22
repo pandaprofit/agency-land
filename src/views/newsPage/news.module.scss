@@ -1,0 +1,103 @@
+/* Основной контейнер страницы */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* Стили для главного заголовка страницы */
+  .container h1 {
+    color: #000;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Контейнер для списка новостей */
+  .newsList {
+    display: grid;
+    gap: 5px;
+  } 
+  
+  /* Стили для отдельной новости */
+  .newsItem {
+    border: 1px solid #a4776400;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: box-shadow 0.2s;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  /* Эффект при наведении на новость */
+  .newsItem:hover {
+    box-shadow: 0 2px 12px rgb(0, 0, 0);
+  }
+  
+  /* Стили для номера новости */
+  .newsNumber {
+    background-color: #A47764;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+  }
+  
+  /* Контейнер для содержимого новости */
+  .newsContent {
+    flex: 1;
+  
+    /* Стили для заголовка новости */
+    h2 {
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+    }
+  
+    /* Эффект при наведении на заголовок */
+    h2:hover {
+      color: #A47764;
+    }
+  }
+  
+  /* Стили для метаданных новости (автор, дата, ссылка) */
+  .meta {
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* Стили для ссылки "Назад" */
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: #0070f3;
+    text-decoration: none;
+  }
+  
+  /* Стили для детальной информации */
+  .details {
+    margin-top: 2rem;
+    line-height: 1.6;
+  }
+  
+  /* Стили для основного содержимого */
+  .content {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #f8f8f8;
+    border-radius: 6px;
+  }
