@@ -3,7 +3,7 @@ import NewsDetails from '@/views/newsPage/[id]/news_id'
 
 export const metadata: Metadata = {
   title: 'News Details',
-  description: ''
+  description: 'Detailed view of a news story'
 }
 
 export default function NewsPage() {

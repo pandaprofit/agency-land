@@ -1,62 +1,209 @@
-// Импорт необходимых компонентов и типов
-import { GetServerSideProps } from 'next'
-import Link from 'next/link'
-import styles from '../../news/news.module.scss'
+'use client'
 
-// Определение интерфейса для новостной статьи
-// Расширенная версия интерфейса, включающая поле text для полного текста статьи
+import Link from 'next/link'
+import styles from '../../newsPage/[id]/news_id.module.scss'
+import { useParams } from 'next/navigation'
+import { useState, useEffect } from 'react'
+
+// Константы для кэширования
+const STORY_CACHE_KEY = 'hackerNewsStoryCache';
+const STORY_CACHE_LIFETIME = 5 * 60 * 1000; // 5 минут
+
 interface Story {
-  id: number        // Уникальный идентификатор новости
-  title: string     // Заголовок новости
-  by: string        // Имя автора
-  time: number      // Время публикации (в формате Unix timestamp)
-  url?: string      // Опциональная ссылка на оригинальную статью
-  text?: string     // Опциональный полный текст статьи
+  id: number
+  title: string
+  by: string
+  time: number
+  url?: string
+  text?: string
 }
 
-// Компонент страницы с детальной информацией о новости
-export default function NewsDetails({ story }: { story: Story }) {
+interface CachedStory {
+  story: Story;
+  timestamp: number;
+}
+
+// Функция для проверки доступности localStorage
+const isLocalStorageAvailable = (): boolean => {
+  try {
+    const test = 'test';
+    localStorage.setItem(test, test);
+    localStorage.removeItem(test);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+
+// Функция для сохранения истории в кэш
+const saveStoryToCache = (id: string, story: Story) => {
+  if (!isLocalStorageAvailable()) return;
+  
+  try {
+    const cacheKey = `${STORY_CACHE_KEY}_${id}`;
+    const cacheData: CachedStory = {
+      story,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+  } catch (error) {
+    console.error('Error saving story to cache:', error);
+  }
+};
+
+// Функция для получения истории из кэша
+const getStoryFromCache = (id: string): CachedStory | null => {
+  if (!isLocalStorageAvailable()) return null;
+  
+  try {
+    const cacheKey = `${STORY_CACHE_KEY}_${id}`;
+    const cachedData = localStorage.getItem(cacheKey);
+    if (!cachedData) return null;
+    return JSON.parse(cachedData);
+  } catch (error) {
+    console.error('Error reading story from cache:', error);
+    return null;
+  }
+};
+
+// Функция для проверки актуальности кэша
+const isCacheValid = (timestamp: number): boolean => {
+  return Date.now() - timestamp < STORY_CACHE_LIFETIME;
+};
+
+export default function NewsDetails() {
+  const params = useParams()
+  const [story, setStory] = useState<Story | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [adjacentStories, setAdjacentStories] = useState<{ prev: Story | null; next: Story | null }>({ prev: null, next: null })
+
+  useEffect(() => {
+    const fetchStory = async () => {
+      if (!params?.id) return;
+
+      const storyId = params.id as string;
+      
+      // Пытаемся получить историю из кэша
+      const cachedData = getStoryFromCache(storyId);
+      
+      if (cachedData && isCacheValid(cachedData.timestamp)) {
+        // Если кэш валиден, используем его
+        setStory(cachedData.story);
+        setLoading(false);
+        
+        // Обновляем данные в фоне
+        updateStoryInBackground(storyId);
+      } else {
+        // Если кэш невалиден или отсутствует, загружаем данные
+        await fetchFreshStory(storyId);
+      }
+    };
+
+    const fetchFreshStory = async (id: string) => {
+      try {
+        const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+        const data = await response.json();
+        
+        if (data) {
+          setStory(data);
+          saveStoryToCache(id, data);
+        }
+      } catch (error) {
+        console.error('Error fetching story:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const updateStoryInBackground = async (id: string) => {
+      try {
+        const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+        const data = await response.json();
+        
+        if (data) {
+          setStory(data);
+          saveStoryToCache(id, data);
+        }
+      } catch (error) {
+        console.error('Error updating story in background:', error);
+      }
+    };
+
+    fetchStory();
+  }, [params?.id]);
+
+  // Загрузка соседних новостей
+  useEffect(() => {
+    if (!story) return;
+
+    try {
+      // Получаем список всех новостей из localStorage
+      const cachedData = localStorage.getItem('hackerNewsCache');
+      if (!cachedData) return;
+
+      const { stories } = JSON.parse(cachedData);
+      if (!stories || !Array.isArray(stories)) return;
+
+      // Находим индекс текущей новости
+      const currentIndex = stories.findIndex(s => s.id === story.id);
+      if (currentIndex === -1) return;
+
+      // Получаем предыдущую и следующую новости
+      const prev = currentIndex > 0 ? stories[currentIndex - 1] : null;
+      const next = currentIndex < stories.length - 1 ? stories[currentIndex + 1] : null;
+
+      setAdjacentStories({ prev, next });
+    } catch (error) {
+      console.error('Error loading adjacent stories:', error);
+    }
+  }, [story]);
+
+  if (loading) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (!story) {
+    return <div className={styles.error}>Story not found</div>;
+  }
+
   return (
-    <div className={styles.container}>
+    <div className={styles.newsDetails}>
       <Link href="/news" className={styles.backLink}>
-        ← Back to News
+        ← Back to news list
       </Link>
       
-      <h1>{story.title}</h1>
-      <div className={styles.details}>
-        <p>Author: {story.by}</p>
-        <p>Date: {new Date(story.time * 1000).toLocaleString()}</p>
-        {story.url && (
-          <a href={story.url} target="_blank" rel="noopener noreferrer">
-            Read full story
-          </a>
+      <h1 className={styles.title}>{story.title}</h1>
+      <div className={styles.meta}>
+        <span>By {story.by}</span>
+        <span>•</span>
+        <span>{new Date(story.time * 1000).toLocaleString()}</span>
+      </div>
+      
+      {story.text && (
+        <div className={styles.content} dangerouslySetInnerHTML={{ __html: story.text }} />
+      )}
+      
+      {story.url && (
+        <a href={story.url} target="_blank" rel="noopener noreferrer" className={styles.externalLink}>
+          Read original article →
+        </a>
+      )}
+
+      <div className={styles.navigation}>
+        {adjacentStories.prev && (
+          <Link href={`/news/${adjacentStories.prev.id}`} className={styles.navLink}>
+            <span className={styles.navArrow}>&lt;</span>
+            <span className={styles.navTitle}>{adjacentStories.prev.title}</span>
+          </Link>
         )}
-        {story.text && (
-          <div 
-            className={styles.content} 
-            dangerouslySetInnerHTML={{ __html: story.text }} 
-          />
+        
+        {adjacentStories.next && (
+          <Link href={`/news/${adjacentStories.next.id}`} className={styles.navLink}>
+            <span className={styles.navTitle}>{adjacentStories.next.title}</span>
+            <span className={styles.navArrow}>&gt;</span>
+          </Link>
         )}
       </div>
     </div>
-  )
-}
-
-// Функция для получения данных на стороне сервера
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  // Получаем ID новости из параметров URL
-  const { id } = context.params!
-  
-  try {
-    // Запрашиваем данные о конкретной новости по её ID
-    const res = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
-    const story = await res.json()
-
-    // Возвращаем данные в качестве props для компонента
-    return { props: { story } }
-  } catch (error) {
-    // В случае ошибки логируем её и возвращаем 404 страницу
-    console.error('Error:', error)
-    return { notFound: true }
-  }
+  );
 }

@@ -8,7 +8,14 @@
   /* Стили для главного заголовка страницы */
   .container h1 {
     color: #000;
-    font-size: 2.5rem;
+    font-size: 5rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Стили для подзаголовка */
+  .container .subtitle {
+    color: #66666631;
+    font-size: 1.25rem;
     margin-bottom: 1.5rem;
   }
   
@@ -60,14 +67,23 @@
       font-size: 1rem;
       line-height: 1.4;
       font-weight: 500;
-      color: #333;
+      color: #A47764;
       margin-bottom: 0.5rem;
       transition: color 0.2s;
+      
+      a {
+        color: #A47764;
+        text-decoration: none;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
-  
+
     /* Эффект при наведении на заголовок */
     h2:hover {
-      color: #A47764;
+      color: #8c5d4d;
     }
   }
   
@@ -78,6 +94,15 @@
     color: #666;
     display: flex;
     gap: 1rem;
+
+    a {
+      color: #0070f3;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   
   /* Стили для ссылки "Назад" */
@@ -100,4 +125,193 @@
     padding: 1rem;
     background: #f8f8f8;
     border-radius: 6px;
+  }
+
+  .searchContainer {
+    margin: 20px 0;
+  }
+
+  .searchWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .searchInput {
+    flex: 1;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #0070f3;
+    }
+  }
+
+  .sortContainer {
+    position: relative;
+  }
+
+  .sortButton {
+    padding: 12px 20px;
+    background-color: #A47764;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:hover {
+      background-color: #8c5d4d;
+    }
+  }
+
+  .sortIcon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+
+  .sortButtonActive {
+    background-color: white;
+    color: #A47764;
+    border: 1px solid #A47764;
+
+    .sortIcon {
+      transform: rotate(180deg);
+    }
+  }
+
+  .sortMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 5px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    min-width: 200px;
+  }
+
+  .sortMenuItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 15px;
+    text-align: left;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: #333;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  .sortMenuItemActive {
+    background-color: #f0f0f0;
+    color: #A47764;
+    font-weight: 500;
+  }
+
+  .checkmark {
+    color: #A47764;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .paginationButton {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #A47764;
+    border-radius: 50%;
+    background-color: #A47764;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+
+    &:hover:not(:disabled) {
+      background-color: #8c5d4d;
+      border-color: #8c5d4d;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: #ccc;
+      border-color: #ccc;
+    }
+  }
+
+  .pageNumber {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: #f0f0f0;
+      border-color: #999;
+    }
+
+    &.active {
+      background-color: #A47764;
+      color: white;
+      border-color: #A47764;
+    }
+  }
+
+  .ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #666;
+  }
+
+  .pageInfo {
+    font-size: 0.9rem;
+    color: #666;
   }
