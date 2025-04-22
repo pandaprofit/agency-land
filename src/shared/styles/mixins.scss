@@ -2,7 +2,7 @@
 @import 'variables';
 
 @mixin desktop {
-  @media (max-width: $desktop) {
+  @media (min-width: 1200px) {
     @content;
   }
 }

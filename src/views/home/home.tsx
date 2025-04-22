@@ -10,12 +10,13 @@ import { HomeProps } from './home.types'
 // import { DaisyUltraTrash } from '@/components/daisyUltraTrash'
 import Vidjets from '@/modules/vidjets/vidjets'
 import Introduce from '@/components/introduce/introduce'
-
+import Monkeyking from '@/modules/monkeyking/monkeyking'
 const Home: FC<HomeProps> = ({ className }) => {
   const rootClassName = classNames(styles.root, className)
 
   return (
     <main className={classNames(rootClassName, "flex flex-col gap-[60px]")}>
+      <Monkeyking />
       <div className="container mx-auto px-4">
         <div className="flex flex-col gap-[60px]">
           <Introduce />

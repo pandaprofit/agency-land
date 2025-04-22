@@ -1,0 +1,81 @@
+@use "@styles/func";
+@use "@styles/mixins" as *;
+@use "@styles/variables" as *;
+
+.root {
+  display: flex;
+  align-items: flex-start; // Выравниваем по верху, если есть условие
+  gap: func.rem(12);
+  padding: func.rem(10) func.rem(12);
+  border-radius: 8px;
+  border: 1px solid #e0e0e0; // Базовая рамка
+  background-color: #ffffff;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  width: 40px; // Фиксируем размер под иконку
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f0f0f0; // Фон для иконки
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: func.rem(2); // Небольшой отступ сверху для иконки
+
+  img { // Стили для Image внутри
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Или contain, в зависимости от иконок
+  }
+}
+
+.content {
+  flex-grow: 1;
+  min-width: 0; // Предотвращаем переполнение
+}
+
+.title {
+  font-size: func.rem(15);
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 func.rem(4); // Отступ под заголовком
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Стили для условия (показывается, когда locked)
+.condition {
+  font-size: func.rem(13);
+  color: #777;
+  margin: 0;
+  line-height: 1.3;
+}
+
+// Стили для полученного достижения
+.unlocked {
+  border-color: #a5d6a7; // Зеленоватая рамка
+  background-color: #e8f5e9; // Светло-зеленый фон
+
+  .title {
+    color: #2e7d32; // Темно-зеленый текст
+  }
+}
+
+// Стили для "заблокированного" (если будем показывать)
+.locked {
+  opacity: 0.7; // Немного повысим opacity для заблокированных
+  // filter: grayscale(1); // Можно раскомментировать для ч/б эффекта
+
+  .title {
+    color: #555;
+  }
+  .iconWrapper {
+    // filter: grayscale(1); // Можно сделать иконку серой
+    opacity: 0.6;
+  }
+}

@@ -1,0 +1,113 @@
+@use "@styles/func";
+@use "@styles/mixins" as *;
+@use "@styles/variables" as *;
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.root {
+  position: fixed;
+  bottom: func.rem(20);
+  right: func.rem(20);
+  z-index: 1050;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: func.rem(10);
+  pointer-events: none;
+}
+
+.notificationItem {
+  display: flex;
+  align-items: center;
+  gap: func.rem(12);
+
+  width: fit-content;
+  min-width: 250px;
+  max-width: 350px;
+  padding: func.rem(12) func.rem(16);
+  border-radius: 8px;
+  background-color: #333;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity 15s linear;
+
+  animation: slideInUp 0.5s ease forwards;
+
+  &.fading {
+    opacity: 0;
+  }
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.label {
+  font-size: func.rem(12);
+  font-weight: 500;
+  color: #bbb;
+  margin: 0 0 func.rem(2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-size: func.rem(15);
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.closeButton {
+  flex-shrink: 0;
+  margin-left: func.rem(10);
+  padding: func.rem(4) func.rem(8);
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: func.rem(20);
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    color: #fff;
+  }
+}

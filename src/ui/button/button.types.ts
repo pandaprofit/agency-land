@@ -4,4 +4,5 @@ export interface ButtonProps {
   href?: string
   children: React.ReactNode
   onClick?: () => void
+  isActive?: boolean
 }
