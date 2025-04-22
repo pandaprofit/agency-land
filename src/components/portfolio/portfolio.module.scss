@@ -1,0 +1,51 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	position: relative;
+}
+
+.portfolioSection {
+  background-color: #8B645A;
+
+	border-radius: 20px;
+
+
+	padding: 70px 1rem 1rem;
+
+}
+
+.portfolioContent {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.portfolioTitle {
+	font-size: 50px;
+	font-weight: 600;
+	text-transform: uppercase;
+	opacity: 1;
+	color: #8B645A;
+}
+
+@keyframes slideUp {
+  from {
+    bottom: -300px;
+  }
+  to {
+    bottom: 0;
+  }
+}
+
+.portfolioImageContainer {
+	position: absolute;
+	bottom: -300px;
+	right: 0;
+	animation: slideUp 1s ease-out forwards;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -1s);
+	animation-iteration-count: 1;
+	animation-fill-mode: both;
+}

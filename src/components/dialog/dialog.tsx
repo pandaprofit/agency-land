@@ -1,3 +1,4 @@
+'use client'
 import { FC, useRef } from 'react'
 import { Portal } from '@/service/portal'
 import {
@@ -28,9 +29,9 @@ const Dialog: FC<DialogProps> = ({ className, onClose }) => {
       <div ref={rootRef} className={rootClassName}>
         <div ref={contentRef} className={styles.content}>
           <div className={styles.buttons}>
-            <Button>Action</Button>
+            <Button tagName='button'>Action</Button>
 
-            <Button onClick={onClose}>Close</Button>
+            <Button tagName='button' onClick={onClose}>Close</Button>
           </div>
         </div>
       </div>

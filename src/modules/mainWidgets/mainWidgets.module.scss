@@ -1,0 +1,94 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 20px;
+	row-gap: 20px;
+
+	justify-content: center;
+
+	& > div {
+		transition: all 0.3s ease;
+	}
+
+	& > div:hover {
+		scale: 1.05;
+	}
+
+	.game {
+		max-width: 850px;
+		height: 100%;
+
+		border: 1px solid rgba(255, 255, 255, 0.4);
+		border-radius: 20px;
+
+		box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+	}
+
+	.portfolioSection {
+		background-color: #8B645A;
+
+		border-radius: 20px;
+
+		width: 348px;
+		height: 473px;
+
+		padding: 70px 1rem 1rem;
+		position: relative;
+
+		overflow: hidden;
+
+		border: 1px solid rgba(255, 255, 255, 0.4);
+		box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+
+		.portfolioContent {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+
+			.portfolioTitle {
+				font-size: 50px;
+				font-weight: 600;
+				text-transform: uppercase;
+				opacity: 1;
+				color: white;
+			}
+
+			.portfolioImageContainer {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+		}
+	}
+
+	.choise {
+		border-radius: 20px;
+		background: rgba(255, 255, 255, 0.05);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.4);
+		box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		height: 473px;
+		width: 348px;
+	}
+
+	.widgets {
+		border-radius: 20px;
+		background: rgba(255, 255, 255, 0.05);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+
+		height: 473px;
+		width: 405px;
+	}
+}

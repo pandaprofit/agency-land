@@ -1,0 +1,163 @@
+[
+	{
+		"imagePreview": "/agency-land/images/portfolio/mst_preview.png",
+		"title": "MST",
+		"stack": [
+			"React",
+			"Next.js",
+			"TypeScript",
+			"SCSS",
+			"Three.js"
+		],
+		"isDesign": true,
+		"link": "https://duha-malo.vercel.app/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/1bw1.png",
+		"title": "Best Wave",
+		"stack": [
+			"Tilda",
+			"Nolim",
+			"Zero-Blocks"
+		],
+		"isDesign": true,
+		"link": "https://1bw1.ru/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/vesdb.png",
+		"title": "VES",
+		"stack": [
+			"Webflow",
+			"Spline"
+		],
+		"isDesign": true,
+		"link": "https://vesdb.io/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/gloid.png",
+		"title": "GloID",
+		"stack": [
+			"Webflow"
+		],
+		"isDesign": false,
+		"link": "https://gloid.io/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/media-trust.png",
+		"title": "Media-Trust",
+		"stack": [
+			"WordPress",
+			"Avada"
+		],
+		"isDesign": true,
+		"link": "https://infodevelopmentpreview.ru/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/printer.png",
+		"title": "Printer",
+		"stack": [
+			"React",
+			"SCSS",
+			"TypeScript",
+			"Spline"
+		],
+		"isDesign": true,
+		"link": "https://printer-ten.vercel.app/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/sai.png",
+		"title": "SAI",
+		"stack": [
+			"Webflow"
+		],
+		"isDesign": true,
+		"link": "https://sai-one.vercel.app/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/kim.png",
+		"title": "K.KIM",
+		"stack": [
+			"React",
+			"Next.js",
+			"TypeScript",
+			"SCSS",
+			"GSAP"
+		],
+		"isDesign": true,
+		"link": "https://kimmy-five.vercel.app/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/moonton.png",
+		"title": "Moon TON",
+		"stack": [
+			"Webflow"
+		],
+		"isDesign": true,
+		"link": "https://moontoon-wheat.vercel.app/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/arktech.png",
+		"title": "ArkTechnik",
+		"stack": [
+			"WordPress",
+			"Avada"
+		],
+		"isDesign": true,
+		"link": "https://ark-technik.ru/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/bush.png",
+		"title": "Bush",
+		"stack": [
+			"WordPress",
+			"Avada"
+		],
+		"isDesign": true,
+		"link": "https://bush63.ru/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/septik.png",
+		"title": "AIS-Septik ",
+		"stack": [
+			"WordPress",
+			"Elementor"
+		],
+		"isDesign": true,
+		"link": "https://septik-group.ru/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/ais-septik.png",
+		"title": "AIS-Septik SEO",
+		"stack": [
+			"WordPress",
+			"Elementor",
+			"SEO"
+		],
+		"isDesign": true,
+		"link": "https://ais-septic.ru/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/kim-audit.png",
+		"title": "K.KIM Audit",
+		"stack": [
+			"Tilda",
+			"Nolim",
+			"Zero-Blocks",
+			"SEO"
+		],
+		"isDesign": true,
+		"link": "https://audit.kim.agency/"
+	},
+	{
+		"imagePreview": "/agency-land/images/portfolio/kim-quiz.png",
+		"title": "K.KIM Quiz",
+		"stack": [
+			"Tilda",
+			"Nolim",
+			"Zero-Blocks",
+			"SEO"
+		],
+		"isDesign": true,
+		"link": "https://quiz.kim.agency/"
+	}
+]

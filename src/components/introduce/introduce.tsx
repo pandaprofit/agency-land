@@ -81,6 +81,7 @@ const Introduce: FC<IntroduceProps> = ({
     if (el) pathRefs.current[index] = el
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const setOverlayRef = (index: number) => (el: SVGPathElement | null) => {
     if (el) overlayRefs.current[index] = el
   }
@@ -106,7 +107,7 @@ const Introduce: FC<IntroduceProps> = ({
         <path ref={setPathRef(17)} d="M104.5 76.1983C102.479 71.9229 98.822 68.5027 93.529 65.9375C88.236 62.9447 81.4032 61.4483 73.0306 61.4483H68.9887C62.6371 61.4483 56.0449 62.731 49.2121 65.2962C42.4755 67.8614 37.5675 72.1367 34.4879 78.1222C31.4083 84.1076 29.4355 92.2308 28.5693 102.492C27.7032 112.752 27.2702 125.151 27.2702 139.687C27.2702 165.766 28.8581 183.509 32.0339 192.915C35.3059 202.321 40.0215 207.023 46.1806 207.023L56.7185 208.306L79.3822 207.665C83.3279 207.665 86.8405 207.878 89.9201 208.306C92.9997 208.734 97.619 210.444 103.778 213.436C110.034 216.429 115.038 226.262 118.791 242.936C122.641 259.182 124.565 287.186 124.565 326.947C124.565 353.026 123.651 374.83 121.823 392.359C119.994 409.46 116.866 422.5 112.439 431.478C108.109 440.029 102.816 445.587 96.5604 448.152C90.4013 450.717 83.6647 452 76.3508 452H68.7C61.4822 452 56.0449 451.572 52.3879 450.717C48.8271 450.29 43.2935 447.938 35.7871 443.663C28.3769 439.388 23.0839 428.272 19.9081 410.316C16.7323 391.932 15.1444 360.08 15.1444 314.762H26.8371V323.74C26.8371 345.544 27.2702 361.79 28.1363 372.479C29.0986 382.74 31.4564 390.435 35.2097 395.566C39.0591 400.268 44.1597 403.475 50.5113 405.185C56.8629 406.468 63.1182 407.109 69.2774 407.109C79.286 407.109 87.7067 405.185 94.5395 401.337C101.468 397.49 106.184 390.221 108.686 379.533C111.188 368.845 112.439 351.316 112.439 326.947C112.439 296.164 110.803 276.711 107.531 268.588C104.356 260.038 98.9182 255.762 91.2193 255.762L69.133 254.48L43.2935 251.273C34.2473 251.273 27.2702 243.578 22.3621 228.186C17.454 212.795 15 186.716 15 149.948C15 120.875 16.0586 96.7198 18.1758 77.4809C20.293 57.8143 23.8538 43.9195 28.8581 35.7964C33.9586 27.2457 39.9252 21.9015 46.758 19.7639C53.5908 17.1987 61.2416 15.9161 69.7104 15.9161C76.7357 15.9161 81.7881 16.3436 84.8677 17.1987C88.0435 17.6262 93.144 19.5501 100.169 22.9704C107.291 25.9631 112.728 36.6514 116.481 55.0354C120.235 73.4193 122.111 101.423 122.111 139.046H110.418C110.418 119.807 109.889 105.484 108.831 96.0786C107.868 86.6728 106.425 80.0461 104.5 76.1983Z" stroke="#BBAA92" stroke-width="30" mask="url(#path-1-outside-1_512_158)" />
 
         {/* AGENCY надписи */}
-        <text ref={setTextRef(0)} x="360" y="140" font-size="50" font-family="sans-serif" fill="#4A4A4A">
+        <text ref={setTextRef(0)} x="360" y="40" font-size="50" font-family="sans-serif" fill="#4A4A4A">
           <tspan>A</tspan>
           <tspan dx="30">G</tspan>
           <tspan dx="30">E</tspan>
@@ -115,7 +116,7 @@ const Introduce: FC<IntroduceProps> = ({
           <tspan dx="30">Y</tspan>
         </text>
 
-        <text ref={setTextRef(1)} x="360" y="180" font-size="50" font-family="sans-serif" fill="#4A4A4A">
+        <text ref={setTextRef(1)} x="360" y="140" font-size="50" font-family="sans-serif" fill="#4A4A4A">
           <tspan>A</tspan>
           <tspan dx="30">G</tspan>
           <tspan dx="30">E</tspan>
@@ -124,7 +125,7 @@ const Introduce: FC<IntroduceProps> = ({
           <tspan dx="30">Y</tspan>
         </text>
 
-        <text ref={setTextRef(2)} x="360" y="220" font-size="50" font-family="sans-serif" fill="#4A4A4A">
+        <text ref={setTextRef(2)} x="360" y="240" font-size="50" font-family="sans-serif" fill="#4A4A4A">
           <tspan>A</tspan>
           <tspan dx="30">G</tspan>
           <tspan dx="30">E</tspan>
@@ -133,7 +134,7 @@ const Introduce: FC<IntroduceProps> = ({
           <tspan dx="30">Y</tspan>
         </text>
 
-        <text ref={setTextRef(3)} x="360" y="260" font-size="50" font-family="sans-serif" fill="#4A4A4A">
+        <text ref={setTextRef(3)} x="360" y="350" font-size="50" font-family="sans-serif" fill="#4A4A4A">
           <tspan>A</tspan>
           <tspan dx="30">G</tspan>
           <tspan dx="30">E</tspan>
@@ -142,7 +143,7 @@ const Introduce: FC<IntroduceProps> = ({
           <tspan dx="30">Y</tspan>
         </text>
 
-        <text ref={setTextRef(4)} x="360" y="300" font-size="50" font-family="sans-serif" fill="#4A4A4A">
+        <text ref={setTextRef(4)} x="360" y="460" font-size="50" font-family="sans-serif" fill="#4A4A4A">
           <tspan>A</tspan>
           <tspan dx="30">G</tspan>
           <tspan dx="30">E</tspan>

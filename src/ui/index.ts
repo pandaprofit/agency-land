@@ -1,4 +1,8 @@
 export { Button } from './button'
+export { CustomCursor } from './customCursor'
 export { Heading } from './heading'
 export { Input } from './input'
+export { Logo } from './logo'
+export { MagicVszuh } from './magicVszuh'
+export { Navigation } from './navigation'
 export { Wrapper } from './wrapper'

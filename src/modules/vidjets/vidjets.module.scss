@@ -1,0 +1,36 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+  display: grid;
+  max-width: 1040px;
+margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+  background-color: var(--base-200);
+  border-radius: 1rem;
+}
+
+// Отступы между элементами
+.gap1 { gap: 8px; }
+.gap2 { gap: 12px; }
+.gap3 { gap: 16px; }
+.gap4 { gap: 20px; }
+
+// Медиа-запросы для планшетов
+@media (min-width: 640px) {
+  .sm-gap1 { gap: 8px; }
+  .sm-gap2 { gap: 12px; }
+  .sm-gap3 { gap: 16px; }
+  .sm-gap4 { gap: 20px; }
+}
+
+// Медиа-запросы для десктопа
+@media (min-width: 1024px) {
+  .lg-gap1 { gap: 8px; }
+  .lg-gap2 { gap: 12px; }
+  .lg-gap3 { gap: 16px; }
+  .lg-gap4 { gap: 20px; }
+}

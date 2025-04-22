@@ -1,0 +1,11 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	display: flex;
+	gap: 15px;
+
+	justify-content: center;
+	align-items: center;
+}
