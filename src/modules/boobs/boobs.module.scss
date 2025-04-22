@@ -1,0 +1,14 @@
+@use "@styles/func";
+@use "@styles/mixins";
+@use "@styles/variables";
+
+.root {
+	position: fixed;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+	width: 50vw;
+	height: 50vh;
+	z-index: 100;
+	background-color: rgba(0, 0, 0, 0.5);
+}

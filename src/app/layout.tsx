@@ -10,6 +10,7 @@ import '@styles/global.scss'
 import './globals.css'
 
 import localFont from 'next/font/local'
+import Boobs from '@/modules/boobs/boobs'
 
 const dm_sans = localFont({
   src: [
@@ -75,6 +76,7 @@ export default function RootLayout({
       <body className={`${dm_sans.variable} ${unbounded.variable} ${roboto.variable} ${montserrat.variable} min-h-screen flex flex-col`}>
         <JotaiProvider>
           <AchievementsProvider>
+            <Boobs />
             <CustomCursor />
             <AchievementsViewer />
             <div id="root" className="flex flex-col min-h-screen">
