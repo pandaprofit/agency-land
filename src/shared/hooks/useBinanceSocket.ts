@@ -11,8 +11,6 @@ export const useBinanceSocket = () => {
 	const pingInterval = useRef<NodeJS.Timeout | null>(null)
 	const pingTimeout = useRef<NodeJS.Timeout | null>(null)
 
-	const renderData = new Set()
-
 	useEffect(() => {
 
 		// Создание сервера
