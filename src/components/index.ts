@@ -1,4 +1,5 @@
 export { AboutContent } from './aboutContent'
+export { BinanceData } from './binanceData'
 export { CaseItem } from './caseItem'
 export { CasesFilter } from './casesFilter'
 export { ChoiseToggles } from './choiseToggles'

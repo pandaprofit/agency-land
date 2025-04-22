@@ -1,3 +1,5 @@
+'use client'
+
 import { FC, useEffect } from 'react'
 import classNames from 'classnames'
 import Image from 'next/image'
