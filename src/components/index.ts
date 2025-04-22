@@ -1,4 +1,5 @@
 export { AboutContent } from './aboutContent'
+export { BinanceData } from './binanceData'
 export { Achievement } from './achievement'
 export { AchievementsViewer } from './achievementsViewer'
 export { CaseItem } from './caseItem'
