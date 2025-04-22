@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import classNames from 'classnames'
 
 import styles from './binanceData.module.scss'
