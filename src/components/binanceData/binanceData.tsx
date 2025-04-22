@@ -13,7 +13,7 @@ const BinanceData: FC<BinanceDataProps> = ({
 }) => {
   const rootClassName = classNames(styles.root, className)
 
-  const { data, isConnected } = useBinanceSocket()
+  const { data, } = useBinanceSocket()
 
   const { getPrice, savePrice, deletePrice } = useSavePrice()
 
