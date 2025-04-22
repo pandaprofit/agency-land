@@ -4,13 +4,23 @@
 
 .root {
 	position: fixed;
-	top: 50vh;
-	left: 50vw;
-	transform: translate(-50%, -50%);
-	width: 50vw;
-	height: 50vh;
-	z-index: 100;
-	background-color: rgba(0, 0, 0, 0.5);
-
+	// Убираем top и left, будем позиционировать через GSAP x/y
+	// top: 10vh;
+	// left: 2vw;
+	width: 20vw;
+	height: 20vh;
+	z-index: 1000;
+	// background-color: rgba(0, 0, 0, 0.5); // Можно оставить, если нужно видеть границы до появления
+	cursor: grab;
+	touch-action: none;
 	border-radius: 8px;
+
+	// Начальная прозрачность 0, чтобы скрыть до установки позиции
+	opacity: 0;
+	// Плавное появление (опционально, можно управлять через GSAP)
+	// transition: opacity 0.3s ease;
+
+	&:active {
+		cursor: grabbing;
+	}
 }
