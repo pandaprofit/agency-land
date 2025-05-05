@@ -71,14 +71,26 @@ const isCacheValid = (timestamp: number): boolean => {
   return Date.now() - timestamp < STORY_CACHE_LIFETIME;
 };
 
+// Функция для получения истории с сервера
+const fetchStoryFromServer = async (id: string): Promise<Story | null> => {
+  try {
+    const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching story:', error);
+    return null;
+  }
+};
+
 export default function NewsDetails() {
   const params = useParams()
   const [story, setStory] = useState<Story | null>(null)
   const [loading, setLoading] = useState(true)
   const [adjacentStories, setAdjacentStories] = useState<{ prev: Story | null; next: Story | null }>({ prev: null, next: null })
 
+  // Загрузка истории
   useEffect(() => {
-    const fetchStory = async () => {
+    const loadStory = async () => {
       if (!params?.id) return;
 
       const storyId = params.id as string;
@@ -92,44 +104,23 @@ export default function NewsDetails() {
         setLoading(false);
         
         // Обновляем данные в фоне
-        updateStoryInBackground(storyId);
+        const freshData = await fetchStoryFromServer(storyId);
+        if (freshData) {
+          setStory(freshData);
+          saveStoryToCache(storyId, freshData);
+        }
       } else {
         // Если кэш невалиден или отсутствует, загружаем данные
-        await fetchFreshStory(storyId);
-      }
-    };
-
-    const fetchFreshStory = async (id: string) => {
-      try {
-        const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
-        const data = await response.json();
-        
+        const data = await fetchStoryFromServer(storyId);
         if (data) {
           setStory(data);
-          saveStoryToCache(id, data);
+          saveStoryToCache(storyId, data);
         }
-      } catch (error) {
-        console.error('Error fetching story:', error);
-      } finally {
         setLoading(false);
       }
     };
 
-    const updateStoryInBackground = async (id: string) => {
-      try {
-        const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
-        const data = await response.json();
-        
-        if (data) {
-          setStory(data);
-          saveStoryToCache(id, data);
-        }
-      } catch (error) {
-        console.error('Error updating story in background:', error);
-      }
-    };
-
-    fetchStory();
+    loadStory();
   }, [params?.id]);
 
   // Загрузка соседних новостей
